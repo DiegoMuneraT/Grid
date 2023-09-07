@@ -56,7 +56,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             # Añadimos el directorio de templates de react
-            os.path.join(BASE_DIR, '../gridapp/build'),
+            os.path.join(BASE_DIR, '../frontend/build'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -122,7 +122,7 @@ STATIC_URL = 'static/'
 
 # Añadimos el directorio de static files de react
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '../gridapp/build/static'),
+    os.path.join(BASE_DIR, '../frontend/build/static'),
 ]
 
 # Default primary key field type
