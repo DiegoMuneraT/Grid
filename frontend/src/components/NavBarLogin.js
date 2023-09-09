@@ -1,6 +1,5 @@
 
-
-export default function NavBarHome(){
+export default function NavBarLogin() {
   return (
     <nav className="navbar navbar-expand-lg fixed-top bg-body bg-gradient clean-navbar navbar-light shadow" data-bs-theme="light" style={{height: "10%"}}>
         <div className="container">
@@ -18,7 +17,7 @@ export default function NavBarHome(){
                         </ul>
                     </div>
                 </div>
-                <div className="justify-content-end align-items-center" style={{width: '25%',display: 'inline-flex',}}><a href="../login/"><button className="btn btn-primary btn-sm" type="button" style={{marginRight: '0px',background: 'rgb(33,37,41)',borderColor: '#000000',}}>Iniciar Sesion</button></a></div>
+                <div className="justify-content-end align-items-center" style={{width: '25%',display: 'inline-flex',}}></div>
             </div>
         </div>
     </nav>
