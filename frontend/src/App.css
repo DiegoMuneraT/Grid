@@ -4079,7 +4079,7 @@ textarea.form-control-lg {
     padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
     font-size: var(--bs-nav-link-font-size);
     font-weight: var(--bs-nav-link-font-weight);
-    color: var(--bs-nav-link-color);
+    color: var(--bs-emphasis-color);
     text-decoration: none;
     background: none;
     border: 0;
@@ -4093,7 +4093,7 @@ textarea.form-control-lg {
 }
 
 .nav-link:hover,.nav-link:focus {
-    color: var(--bs-nav-link-hover-color)
+    color: var(--bs-gray-dark)
 }
 
 .nav-link:focus-visible {
@@ -4153,9 +4153,11 @@ textarea.form-control-lg {
 }
 
 .nav-pills .nav-link.active,.nav-pills .show>.nav-link {
-    color: var(--bs-nav-pills-link-active-color);
-    background-color: var(--bs-nav-pills-link-active-bg)
+    background-color: var(--bs-body-color);
+    color: var(--bs-body-bg);
 }
+
+
 
 .nav-underline {
     --bs-nav-underline-gap: 1rem;
