@@ -11,6 +11,7 @@ export default function Error404() {
                 <div className="container" style={{height: '100vh', width: '100vw'}}>
                   <div className="block-heading" style={{paddingTop: '35px',}}>
                     <h2 className="text-info">Error404</h2>
+                    <p>La pagina no fue encontrada.</p>
                   </div>
                 </div>
             </section>
