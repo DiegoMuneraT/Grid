@@ -9,11 +9,11 @@ export default function Comments() {
                 
                 <section className="clean-block clean-blog-list dark">
                     <div className="container">
-                    <div className="block-content" style={{margin: '80px 0 0 80px',}}>
-                        <Comentarios/>
-                        <Comentarios/>
-                        <Comentarios/>
-                    </div>
+                        <div className="block-content" style={{margin: '80px 0 0 80px',}}>
+                            <Comentarios/>
+                            <Comentarios/>
+                            <Comentarios/>
+                        </div>
                     </div>
                 </section>
 
