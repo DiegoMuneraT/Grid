@@ -13,11 +13,13 @@ import './assets/css/vanilla-zoom.min.css';
 import OwnVehicles from './pages/Own-vehicles'
 import Comments from './pages/Comments'
 import Statistics from './pages/Statistics'
+import Error404 from './errors/Error404'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path='*' element={<Error404/>} />
         <Route path='' element={<Home/>} />
         <Route path='acerca-de-nosotros/' element={<AboutUs/>} />
         <Route path='contacto/' element={<Contact/>} />
