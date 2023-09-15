@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import NavBarApp from "../components/NavBarApp";
 
 export default function OwnVehicles() {
@@ -26,6 +27,21 @@ export default function OwnVehicles() {
                       </tr>
                   </tbody>
                 </table>
+
+                <NavLink className="nav-link py-3 border-bottom rounded-0" to='/app/mis-vehiculos/agregar-vehiculo/'>
+                  <button
+                    className="btn btn-primary"
+                    style={{
+                      background: "var(--bs-emphasis-color)",
+                      borderColor: "var(--bs-emphasis-color)",
+                      borderTopColor: "var(--bs-body-color)",
+                      marginTop: "20px",
+                    }}>
+                  Agregar un vehiculo
+                  </button>
+                </NavLink>
+                
+                
               </div>
             </div>
         </section>

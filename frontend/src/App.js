@@ -21,6 +21,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import './assets/css/baguetteBox.min.css';
 import './assets/css/Footer-Dark-icons.css';
 import './assets/css/vanilla-zoom.min.css';
+import AddVehicle from 'pages/Add-vehicle'
 
 function App() {
   return (
@@ -49,6 +50,16 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="app/mis-vehiculos/agregar-vehiculo/"
+          element={
+            <ProtectedRoute>
+              <AddVehicle />
+            </ProtectedRoute>
+          }
+        />
+
         <Route
           path="app/sugerencias/"
           element={
