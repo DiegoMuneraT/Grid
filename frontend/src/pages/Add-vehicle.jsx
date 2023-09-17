@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import NavBarApp from "../components/NavBarApp";
+import AddCar from "components/addVehicle/addVehicle";
 
 export default function AddVehicle() {
   return (
@@ -10,9 +11,9 @@ export default function AddVehicle() {
         <section className="clean-block clean-blog-list dark" style={{height: "100vh", overflowY: "hidden"}}>
             <div className="container">
               <div className="block-content" style={{margin: '80px 0 0 80px',}}>
-                <form style={{ borderTopColor: "var(--bs-emphasis-color)" }}>
+                <form onSubmit={AddCar} style={{ borderTopColor: "var(--bs-emphasis-color)" }}>
                     <div className="mb-3">
-                        <label className="form-label" for="email">
+                        <label className="form-label" for="marca">
                         Marca
                         </label>
                         <input
@@ -23,7 +24,7 @@ export default function AddVehicle() {
                         />
                     </div>
                     <div className="mb-3">
-                        <label className="form-label" for="email">
+                        <label className="form-label" for="modelo">
                         Modelo
                         </label>
                         <input
@@ -34,7 +35,7 @@ export default function AddVehicle() {
                         />
                     </div>
                     <div className="mb-3">
-                        <label className="form-label" for="email">
+                        <label className="form-label" for="placa">
                         Placa
                         </label>
                         <input
