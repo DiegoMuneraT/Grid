@@ -1,6 +1,4 @@
 #En este archivos se definen los modelos de bases de datos con el fin de tener una interacción más fácil y amigable con la base de datos.
-
-from datetime import datetime
 from django.db import models
 
 # Crear un metodo para serializar
@@ -14,7 +12,7 @@ class Vehicle(models.Model):
     placa = models.CharField(max_length=6)
     marca = models.CharField(max_length=50)
     modelo = models.IntegerField()
-    usuario = models.CharField()
+    usuario = models.CharField(max_length=100)
     activo = models.BooleanField(default=True)
 
 
@@ -31,18 +29,7 @@ class Station(models.Model):
 class Operation(models.Model):
 
     id = models.AutoField(primary_key=True)
-    timestamp = db.Column(
-        db.DateTime,
-        index=True,
-        default=datetime.strptime(
-            (
-                datetime.now(pytz.timezone("America/Bogota")).strftime(
-                    "%Y-%m-%d %H:%M:%S"
-                )
-            ),
-            "%Y-%m-%d %H:%M:%S",
-        ),
-    )
+    timestamp = models.DateTimeField()
     operative_state = models.IntegerField()
     latitude = models.FloatField()
     longitude = models.FloatField()
@@ -56,8 +43,8 @@ class Operation(models.Model):
     mean_speed = models.FloatField()
     odometer = models.FloatField()
     acceleration = models.FloatField()
-    user_name = models.CharField()
-    user_id = models.CharField
+    user_email = models.CharField(max_length=100)
+    user_id = models.CharField(max_length=100)
     batt_temp =  models.FloatField()
     ext_temp =  models.FloatField()
     power_kw = models.FloatField()
@@ -82,7 +69,7 @@ class Operation(models.Model):
     range_ideal = models.FloatField()
     range_full = models.FloatField()
     drivetime = models.FloatField()
-    drivemode = models.CharField()
+    drivemode = models.CharField(max_length=64)
     charge_time = models.IntegerField()
     charger_type = models.CharField(max_length=64)
     footbrake = models.IntegerField()
