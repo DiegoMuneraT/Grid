@@ -3,6 +3,6 @@ from .models import Vehicle, Station, Operation
 
 # Register your models here.
 
-admin.register(Vehicle)
-admin.register(Station)
-admin.register(Operation)
+admin.site.register(Vehicle)
+admin.site.register(Station)
+admin.site.register(Operation)
