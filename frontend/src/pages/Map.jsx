@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import NavBarApp from "../components/NavBarApp";
 import mapboxgl from "mapbox-gl";
 
-const key = "AIzaSyCERW3YjcC1e0M984boxaeATpGhJXRsy2M";
-
 const Map = () => {
   mapboxgl.accessToken = "pk.eyJ1IjoiZGllZ29tdW5lcmE3IiwiYSI6ImNsbWw3bWxrbzA4cGkycnBxYXNpMHpuZ3gifQ.0xmZY7JTLBK2q5QhDGmCVA";
   const mapContainer = useRef(null);
