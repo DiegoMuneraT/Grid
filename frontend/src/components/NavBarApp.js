@@ -133,7 +133,7 @@ const NavBarApp = () => {
           data-bs-popper="none"
           data-popper-placement="top-start"
         >
-          <Link className="dropdown-item" to="/" onClick={handleLogOut}>
+          <Link style={{ zIndex: '2' }} className="dropdown-item" to="/" onClick={handleLogOut}>
             Sign out
           </Link>
         </div>
