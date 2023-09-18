@@ -1,5 +1,7 @@
 import NavBarApp from "../components/NavBarApp";
 
+const key = "AIzaSyCERW3YjcC1e0M984boxaeATpGhJXRsy2M";
+
 const Map = () => {
   return (
     <body>
@@ -8,9 +10,8 @@ const Map = () => {
         <p style={{color: 'var(--bs-body-bg)', marginBottom: '0px', opacity: '1',}}>Placa</p>
       </div>
       <NavBarApp/>
-      <div style={{height: '100vh', overflowY: 'hidden'}}>
-        <iframe title="map" allowFullScreen="" src="https://www.google.com/maps/d/u/0/embed?mid=1tmDkMVSfIYowe3z-6Jgy6J0y9nsQkKM&ehbc=2E312F" style={{width: '100%', height: '100%', position: 'static'}}>
-        </iframe>
+      <div id="map" style={{height: '100vh', overflowY: 'hidden'}}>
+        
       </div>
     </body>
   )
