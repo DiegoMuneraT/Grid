@@ -15,7 +15,7 @@ const NavBarApp = () => {
   return (
     <div
       className="bg-body shadow d-flex flex-column flex-shrink-0 position-fixed top-0 bottom-0"
-      style={{ width: "4.5rem" }}
+      style={{ width: "4.5rem", zIndex: '2' }}
     >
       <div
         className="justify-content-center"
