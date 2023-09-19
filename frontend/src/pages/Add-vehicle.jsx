@@ -19,12 +19,14 @@ export default function AddVehicle() {
     errors
   } } = useForm()
 
-  const onSubmit = handleSubmit(async data => {
+  const onSubmit = handleSubmit(data => {
     
-    await setData({ ...data, id: getUser() })
-
-    AddCar(datos);
+    setData({ ...data, id: getUser() })
+    AddCar(datos)
+    
   })
+
+
 
   return (
     <body>

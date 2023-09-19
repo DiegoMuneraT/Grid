@@ -16,7 +16,7 @@ export default function OwnVehicles() {
 
   const listVehicles = async () => {
     try{
-       const ans = await vehicleServer.listVehicles();
+      const ans = await vehicleServer.listVehicles();
       console.log(ans);
 
     }catch(error){
