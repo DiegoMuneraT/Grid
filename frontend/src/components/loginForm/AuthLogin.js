@@ -18,7 +18,7 @@ const AuthLogin = (event) => {
             event.target.reset();
     })
     .catch((error) => {
-        console.log(error);
+        console.log(`Error: ${error.code}, ${error.message}`);
     })
 
 }

@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import NavBarLogin from "../components/NavBarLogin";
 import { UserAuth } from "../context/AuthContext";
 import AuthSignin from "../components/signForm/AuthSignin";
+import { Toast } from "toaster-js";
 
 const Register = () => {
   // Contexto de autenticación
@@ -18,7 +19,8 @@ const Register = () => {
     try {
       await googleSignIn();
     } catch (error) {
-      console.log(error);
+      console.log(`Error: ${error.code}, ${error.message}`);
+      new Toast(`${error.message}, ${error.code}`, Toast.TYPE_ERROR, Toast.TIME_NORMAL);
     }
   };
  // Registrar con Microsoft
@@ -26,7 +28,8 @@ const Register = () => {
     try {
       await microsoftSignIn();
     } catch (error) {
-      console.log(error);
+      console.log(`Error: ${error.code}, ${error.message}`);
+      new Toast(`${error.message}, ${error.code}`, Toast.TYPE_ERROR, Toast.TIME_NORMAL);
     }
   };
   // Redireccionar al inicio si el usuario ya está autenticado
@@ -56,6 +59,7 @@ const Register = () => {
                   id="email"
                   data-bs-theme="light"
                   name="email"
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -68,6 +72,7 @@ const Register = () => {
                   id="password"
                   data-bs-theme="light"
                   name="password"
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -79,6 +84,7 @@ const Register = () => {
                   type="password"
                   id="password-1"
                   data-bs-theme="light"
+                  required
                 />
               </div>
               <div
