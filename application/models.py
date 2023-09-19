@@ -11,7 +11,7 @@ class Vehicle(models.Model):
     id = models.AutoField(primary_key=True)
     placa = models.CharField(max_length=6)
     marca = models.CharField(max_length=50)
-    modelo = models.IntegerField()
+    modelo = models.PositiveIntegerField()
     usuario = models.CharField(max_length=100)
     activo = models.BooleanField(default=True)
 

@@ -1,7 +1,33 @@
 import { NavLink } from "react-router-dom";
 import NavBarApp from "../components/NavBarApp";
+import { useEffect, useState } from "react";
+import * as vehicleServer from "components/vehicleServer";
 
 export default function OwnVehicles() {
+
+  const initial = [{
+    marca: 'Mercedes',
+    modelo: '2020',
+    placa: 'ABC123'
+
+  }];
+
+  const [vehicles, setVehicles] = useState(initial);
+
+  const listVehicles = async () => {
+    try{
+       const ans = await vehicleServer.listVehicles();
+      console.log(ans);
+
+    }catch(error){
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    listVehicles();
+  }, []);
+
   return (
     <body>
       <main className="page service-page" style={{background: '#f9f9f9', width: '100%', height: '100%', overflowX: 'hidden',}}>
@@ -20,13 +46,16 @@ export default function OwnVehicles() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="column">xxx</td>
-                      <td className="column">xxx</td>
-                      <td className="column">xxx</td>
-                      </tr>
+                      {vehicles.map((vehicle) => (
+                        <tr>
+                          <td className="column" style={{color: "var(--bs-black)"}}>{vehicle.marca}</td>
+                          <td className="column" style={{color: "var(--bs-black)"}}>{vehicle.modelo}</td>
+                          <td className="column" style={{color: "var(--bs-black)"}}>{vehicle.placa}</td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
+                <br/>
 
                 <NavLink className="nav-link py-3 border-bottom rounded-0" to='/app/mis-vehiculos/agregar-vehiculo/'>
                   <button

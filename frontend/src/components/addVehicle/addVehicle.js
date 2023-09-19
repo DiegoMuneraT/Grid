@@ -1,6 +1,3 @@
-function AddCar(data){
-    // Crear el objeto de usuario
-    console.log(data)
-
+export default function AddCar(data){
+    console.log("Form: ", data)
 }
-export default AddCar;
