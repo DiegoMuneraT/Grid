@@ -8,25 +8,32 @@ import AddCar from "components/addVehicle/addVehicle";
 
 
 export default function AddVehicle() {
-
   const { user } = UserAuth();
 
-  const [datos, setData] = useState()
+  const userid = user.uid;
 
-  const getUser = () => user.uid
-
-  const { register, handleSubmit, formState: {
-    errors
-  } } = useForm()
-
-  const onSubmit = handleSubmit(data => {
-    
-    setData({ ...data, id: getUser() })
-    AddCar(datos)
-    
+  const [data, setData] = useState({
+    modelo: '',
+    marca: '',
+    placa: '',
+    id: '',
   })
 
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
 
+    setData({
+      ...data,
+      [name]: value,
+      id: userid,
+    });
+    console.log(data)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    AddCar(data)
+  }
 
   return (
     <body>
@@ -36,40 +43,46 @@ export default function AddVehicle() {
         <section className="clean-block clean-blog-list dark" style={{ height: "100vh", overflowY: "hidden" }}>
           <div className="container">
             <div className="block-content" style={{ margin: '80px 0 0 80px', }}>
-              <form onSubmit={onSubmit} style={{ borderTopColor: "var(--bs-emphasis-color)" }}>
+              <form style={{ borderTopColor: "var(--bs-emphasis-color)" }}>
                 <div className="mb-3">
                   <label className="form-label">
-                    Marca <b>*</b> {errors.marca && <span>Este campo es requerido</span>}
+                    Marca <b>*</b> 
                   </label>
                   <input
                     className="form-control item"
                     type="marca"
                     name="marca"
-                    {...register("marca", { required: true })}
+                    value={data.marca}
+                    required
+                    onChange={handleInputChange}
                     data-bs-theme="light"
                   />
                 </div>
                 <div className="mb-3">
                   <label className="form-label">
-                    Modelo <b>*</b> {errors.modelo && <span>Este campo es requerido</span>}
+                    Modelo <b>*</b>
                   </label>
                   <input
                     className="form-control item"
                     type="modelo"
                     name="modelo"
-                    {...register("modelo", { required: true })}
+                    required
+                    value={data.modelo}
+                    onChange={handleInputChange}
                     data-bs-theme="light"
                   />
                 </div>
                 <div className="mb-3">
                   <label className="form-label">
-                    Placa <b>*</b> {errors.placa && <span>Este campo es requerido</span>}
+                    Placa <b>*</b>
                   </label>
                   <input
                     className="form-control item"
                     type="placa"
                     name="placa"
-                    {...register("placa", { required: true })}
+                    required
+                    value={data.placa}
+                    onChange={handleInputChange}
                     data-bs-theme="light"
                   />
                 </div>
@@ -84,6 +97,7 @@ export default function AddVehicle() {
                   <button
                     className="btn btn-primary"
                     type="submit"
+                    onClick={handleSubmit}
                     style={{
                       background: "var(--bs-emphasis-color)",
                       borderColor: "var(--bs-emphasis-color)",

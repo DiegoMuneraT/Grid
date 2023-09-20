@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import NavBarApp from "../components/NavBarApp";
 import { useEffect, useState } from "react";
-import * as vehicleServer from "components/vehicleServer";
+import * as vehicleServer from "api/vehicleServer";
 
 export default function OwnVehicles() {
 

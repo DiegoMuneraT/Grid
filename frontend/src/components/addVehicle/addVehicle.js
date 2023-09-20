@@ -1,8 +1,8 @@
-import * as vehicleServer from "components/vehicleServer"
+import * as vehicleServer from "api/vehicleServer";
 
 export default async function AddCar(data){
     
-    const res = await vehicleServer.createVehicle(data);
-    console.log(res)
+    /*const res = await vehicleServer.createVehicle(data);*/
+    console.log("Form: ", data)
     
 }
