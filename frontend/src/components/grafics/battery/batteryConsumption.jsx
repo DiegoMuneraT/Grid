@@ -69,7 +69,7 @@ const BatteryConsumption = () => {
         <section className="clean-block clean-blog-list dark" style={{ height: '100vh', overflowY: 'hidden' }}>
           <div className="container">
             <div className="block-content" style={{ margin: '80px 0 0 80px' }}>
-            <h1 style={{textAlign: "center"}}>Estadisticas</h1>
+            <h2 style={{textAlign: "center"}}>Consumo diario</h2>
               {/* Contenedor de la gráfica */}
               <div style={{ maxWidth: '400px', maxHeight: '400px' }}>
                 {/* Elemento canvas para la gráfica */}
