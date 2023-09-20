@@ -31,20 +31,40 @@ export default function AboutUs() {
                 <div className="detailed-description">
                   <h2>Nuestra Historia</h2>
                   <p>
-                    Aquí puedes contar la historia detallada de tu proyecto, los desafíos que enfrentaron y los logros que han alcanzado.
+                    Aquí se puede contar la historia detallada del proyecto.
                   </p>
                 </div>
                 <div className="team-section">
                   <h2>Nuestro Equipo</h2>
                   <div className="team-member">
                     <img src="team-member1.jpg" alt="Miembro del equipo 1" />
-                    <h3>Nombre del Miembro 1</h3>
-                    <p>Puesto / Rol</p>
+                    <h3>Brigith Lorena Giraldo Vargas</h3>
+                    <p>Scrum Master</p>
                   </div>
                   <div className="team-member">
                     <img src="team-member2.jpg" alt="Miembro del equipo 2" />
-                    <h3>Nombre del Miembro 2</h3>
-                    <p>Puesto / Rol</p>
+                    <h3>Daniel Melguizo Roldan</h3>
+                    <p>Developer</p>
+                  </div>
+                  <div className="team-member">
+                    <img src="team-member2.jpg" alt="Miembro del equipo 2" />
+                    <h3>Diego Alexander Munera Tobon</h3>
+                    <p>Developer</p>
+                  </div>
+                  <div className="team-member">
+                    <img src="team-member2.jpg" alt="Miembro del equipo 2" />
+                    <h3>Holmer Ortega Gomez</h3>
+                    <p>Tester</p>
+                  </div>
+                  <div className="team-member">
+                    <img src="team-member2.jpg" alt="Miembro del equipo 2" />
+                    <h3>Samuel Salazar Salazar</h3>
+                    <p>Tester/Arquitecto</p>
+                  </div>
+                  <div className="team-member">
+                    <img src="team-member2.jpg" alt="Miembro del equipo 2" />
+                    <h3>Valentina Ochoa Arboleda</h3>
+                    <p>Arquitecto</p>
                   </div>
                 </div>
                 </div>
