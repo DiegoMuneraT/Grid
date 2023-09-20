@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "context/AuthContext";
 import { useState } from "react";
 
 import NavBarApp from "../components/NavBarApp";
-import AddCar from "components/addVehicle/addVehicle";
+import * as vehicleServer from "api/vehicleServer";
 
 
 export default function AddVehicle() {
@@ -12,11 +11,13 @@ export default function AddVehicle() {
 
   const userid = user.uid;
 
+  const navigate = useNavigate();
+
   const [data, setData] = useState({
     modelo: '',
     marca: '',
     placa: '',
-    id: '',
+    usuario: '',
   })
 
   const handleInputChange = (event) => {
@@ -25,14 +26,21 @@ export default function AddVehicle() {
     setData({
       ...data,
       [name]: value,
-      id: userid,
+      usuario: userid,
     });
     console.log(data)
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    AddCar(data)
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try{
+      await vehicleServer.createVehicle(data);
+      navigate('/app/mis-vehiculos/')
+
+    }catch(error){
+      console.log(error);
+    }
   }
 
   return (
@@ -50,7 +58,6 @@ export default function AddVehicle() {
                   </label>
                   <input
                     className="form-control item"
-                    type="marca"
                     name="marca"
                     value={data.marca}
                     required
@@ -64,7 +71,7 @@ export default function AddVehicle() {
                   </label>
                   <input
                     className="form-control item"
-                    type="modelo"
+                    type="number"
                     name="modelo"
                     required
                     value={data.modelo}
@@ -78,7 +85,6 @@ export default function AddVehicle() {
                   </label>
                   <input
                     className="form-control item"
-                    type="placa"
                     name="placa"
                     required
                     value={data.placa}

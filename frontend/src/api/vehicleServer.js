@@ -1,12 +1,14 @@
-import React from "react";
 import axios from "axios";
 
-const API_URL = ''
+const vehicleApi = axios.create({
+    baseURL:'http://localhost:8000/vehicles/api/vehicle/'
+})
+
 
 export const listVehicles = async () => {
-    return await axios.get(API_URL);
+    return await vehicleApi.get("/");
 }
 
 export const createVehicle = async (newVehicle) => {
-    return await axios.post(API_URL, newVehicle)
+    return await vehicleApi.post("/", newVehicle)
 }
