@@ -6,11 +6,14 @@ import * as vehicleServer from "api/vehicleServer";
 
 const Table = ({ modelo, marca, placa }) => {
   return (
+  <>
   <tbody>
     <th className="column">{marca}</th> 
     <th className="column">{modelo}</th>
     <th className="column">{placa}</th>
   </tbody>
+  <br/>
+  </>
   )
 }
 
@@ -39,7 +42,8 @@ export default function OwnVehicles() {
     const keys = Object.keys(vehicles)
   
     if (keys.length === 0) {
-      return <p align="center">Cargando...</p>;
+      return <><br/><p style={{ justifyContent: 'left'}}>Servidor fuera de linea 😭 </p></>
+
     }
 
     const carElements = [];
