@@ -7,12 +7,16 @@ import * as vehicleServer from "api/vehicleServer";
 
 
 export default function AddVehicle() {
+
+  //Obtener el usuario autenticado
   const { user } = UserAuth();
 
+  //Obtener el id del usuario
   const userid = user.uid;
 
   const navigate = useNavigate();
 
+  //Datos del formulario para agregar vehiculo
   const [data, setData] = useState({
     modelo: '',
     marca: '',
@@ -20,6 +24,7 @@ export default function AddVehicle() {
     usuario: '',
   })
 
+  //Actualiza las variables con base a los input del usuario
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
@@ -31,6 +36,7 @@ export default function AddVehicle() {
     console.log(data)
   }
 
+  //Envio de datos y redireccionamiento
   const handleSubmit = async (event) => {
     event.preventDefault();
 
