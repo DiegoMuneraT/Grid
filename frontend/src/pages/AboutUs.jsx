@@ -3,13 +3,14 @@ import Footer from "../components/Footer"
 
 export default function AboutUs() {
   return (
-    <div>
+    <body style={{background: 'transparent',}}>
         <NavBarHome/>
         <main className="page service-page" style={{background: 'var(--bs-body-bg)', }}>
             <section className="clean-block clean-services dark" style={{background: '#f9f9f9', padding: '0 0 100px'}}>           
                 <div className="container">
-                  <p></p>
-                <h2 className="text-info" style={{textAlign: 'center'}}>Acerca de nosotros</h2>
+                <div className="block-heading" style={{paddingTop: '35px'}}>
+                  <h2 className="text-info" style={{textAlign: 'center'}}>Acerca de nosotros</h2>
+                </div>
                 <header>
                   <p></p>
                   <h1>ManagEV, aprende a conocer más tu vehiculo</h1>
@@ -71,7 +72,7 @@ export default function AboutUs() {
             </section>
         </main>
         <Footer/>
-    </div>
+    </body>
     
   )
 }
