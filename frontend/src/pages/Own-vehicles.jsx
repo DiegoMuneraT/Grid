@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import NavBarApp from "../components/NavBarApp";
 import { useEffect, useState } from "react";
 import * as vehicleServer from "api/vehicleServer";
+import { UserAuth } from "context/AuthContext";
 
 
 const Table = ({ modelo, marca, placa }) => {
@@ -19,11 +20,17 @@ const Table = ({ modelo, marca, placa }) => {
 
 export default function OwnVehicles() {
 
+  //Obtener el usuario autenticado
+  const { user } = UserAuth();
+
+  //Obtener el id del usuario
+  const userid = user.uid;
+
   const [vehicles, setVehicles] = useState({});
 
   const listVehicles = async () => {
     try {
-      const ans = await vehicleServer.listVehicles();
+      const ans = await vehicleServer.listVehicles(userid);
       const data = await ans.data
 
       setVehicles(data)

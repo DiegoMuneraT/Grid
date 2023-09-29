@@ -5,11 +5,12 @@ const vehicleApi = axios.create({
     baseURL:'http://localhost:8000/vehicles/api/vehicle/'
 })
 
-
-export const listVehicles = async () => {
-    return await vehicleApi.get("/");
+//Obtencion de vehiculos
+export const listVehicles = async (usuario) => {
+    return await vehicleApi.get("/?usuario="+usuario);
 }
 
+//Creacion de vehiculos
 export const createVehicle = async (newVehicle) => {
     return await vehicleApi.post("/", newVehicle)
 }
