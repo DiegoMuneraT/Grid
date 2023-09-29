@@ -7,7 +7,7 @@ const vehicleApi = axios.create({
 
 //Obtencion de vehiculos
 export const listVehicles = async (usuario) => {
-    return await vehicleApi.get("/?usuario="+usuario);
+    return await vehicleApi.get("/?usuario="+usuario+'&activo=true');
 }
 
 //Creacion de vehiculos
