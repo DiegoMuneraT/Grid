@@ -8,12 +8,11 @@ import { UserAuth } from "context/AuthContext";
 const Table = ({ modelo, marca, placa }) => {
   return (
   <>
-  <tbody>
+  <tr>
     <th className="column">{marca}</th> 
     <th className="column">{modelo}</th>
     <th className="column">{placa}</th>
-  </tbody>
-  <br/>
+  </tr>
   </>
   )
 }
@@ -49,7 +48,7 @@ export default function OwnVehicles() {
     const keys = Object.keys(vehicles)
   
     if (keys.length === 0) {
-      return <><br/><p style={{ justifyContent: 'left'}}>Servidor fuera de linea 😭 </p></>
+      return <><br/><p style={{ justifyContent: 'left'}}>Aun no hay vehiculos agregados.</p></>
 
     }
 
@@ -87,7 +86,10 @@ export default function OwnVehicles() {
                     <th className="column">Placa</th>
                   </tr>
                 </thead>
-                {carConstructor()}
+                <tbody>
+                  {carConstructor()}
+                </tbody>
+                
               </table>
               <br />
 
