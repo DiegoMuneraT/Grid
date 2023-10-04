@@ -15362,6 +15362,7 @@ tbody tr:hover {
 }
 
 .column {
+    font-family: OpenSans-Regular;
     width: 260px;
     padding-left: 40px;
 }
