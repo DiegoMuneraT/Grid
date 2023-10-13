@@ -33,7 +33,6 @@ export default function AddVehicle() {
       [name]: value,
       usuario: userid,
     });
-    console.log(data)
   }
 
   //Envio de datos y redireccionamiento

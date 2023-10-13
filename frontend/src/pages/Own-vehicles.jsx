@@ -4,14 +4,34 @@ import { useEffect, useState } from "react";
 import * as vehicleServer from "api/vehicleServer";
 import { UserAuth } from "context/AuthContext";
 
+//Estilos
+import IconButton from '@mui/material/IconButton';
+import CancelIcon from '@mui/icons-material/Cancel';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-const Table = ({ modelo, marca, placa }) => {
+
+const Table = ({ modelo, marca, placa, id}) => {
+
+  const update = async (id) => {
+
+    const data = {placa: placa, modelo: modelo, marca: marca, usuario: OwnVehicles.getUserID, activo: false}
+
+    console.log(data)
+
+    // try{
+    //   await vehicleServer.modifyVehicle(id, data);
+  
+    // }catch(error){
+    //   console.log(error);
+    // }
+    
+  }
   return (
   <>
   <tr>
     <th className="column">{marca}</th> 
     <th className="column">{modelo}</th>
-    <th className="column">{placa}</th>
+    <th className="column">{placa} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<IconButton aria-label="check"><CheckCircleIcon/></IconButton><IconButton aria-label="cancel" onClick={() => {update(id)}}><CancelIcon/></IconButton></th>
   </tr>
   </>
   )
@@ -19,17 +39,21 @@ const Table = ({ modelo, marca, placa }) => {
 
 export default function OwnVehicles() {
 
+  const [vehicles, setVehicles] = useState({});
+
   //Obtener el usuario autenticado
   const { user } = UserAuth();
 
-  //Obtener el id del usuario
-  const userid = user.uid;
+  //Obtener el id del usuario 
+  let userid = user.uid;
 
-  const [vehicles, setVehicles] = useState({});
+  function getUserID(){
+    return userid;
+  }
 
   const listVehicles = async () => {
     try {
-      const ans = await vehicleServer.listVehicles(userid);
+      const ans = await vehicleServer.listVehicles(getUserID());
       const data = await ans.data
 
       setVehicles(data)
@@ -60,6 +84,7 @@ export default function OwnVehicles() {
           modelo={vehicles[key].modelo}
           marca={vehicles[key].marca}
           placa={vehicles[key].placa}
+          id = {vehicles[key].id}
         />
       );
     });

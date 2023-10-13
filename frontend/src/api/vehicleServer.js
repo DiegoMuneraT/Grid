@@ -14,3 +14,8 @@ export const listVehicles = async (usuario) => {
 export const createVehicle = async (newVehicle) => {
     return await vehicleApi.post("/", newVehicle)
 }
+
+//Creacion de vehiculos
+export const modifyVehicle = async (id, data) => {
+    return await vehicleApi.put("/"+id+"/", data)
+}
