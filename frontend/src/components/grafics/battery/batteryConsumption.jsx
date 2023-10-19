@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import NavBarApp from 'components/NavBarApp';
 import Chart from 'chart.js/auto';
 
 const BatteryConsumption = () => {
@@ -65,7 +64,6 @@ const BatteryConsumption = () => {
   
     return (
       <div>
-        <NavBarApp />
         <section className="clean-block clean-blog-list dark" style={{ height: '100vh', overflowY: 'hidden' }}>
           <div className="container">
             <div className="block-content" style={{ margin: '80px 0 0 80px' }}>

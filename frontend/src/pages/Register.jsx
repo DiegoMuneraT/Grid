@@ -40,7 +40,7 @@ const Register = () => {
   }, [user]);
 
   return (
-    <body>
+    <>
       <NavBarLogin />
       <main className="page login-page">
         <section className="clean-block clean-form dark">
@@ -164,7 +164,7 @@ const Register = () => {
         </section>
       </main>
       <Footer />
-    </body>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import NavBarApp from "../components/NavBarApp";
+import NavBarAdmin from "components/NavBarAdmin";
 import { useEffect, useState } from "react";
 import * as vehicleServer from "api/vehicleServer";
 import { UserAuth } from "context/AuthContext";
@@ -96,7 +96,7 @@ export default function OwnVehicles() {
 
   return (
     <main className="page service-page" style={{ background: '#f9f9f9', width: '100%', height: '100%', overflowX: 'hidden', }}>
-      <NavBarApp />
+      <NavBarAdmin />
 
       <section className="clean-block clean-blog-list dark" style={{ height: "100vh", overflowY: "hidden" }}>
         <div className="container">
@@ -117,7 +117,7 @@ export default function OwnVehicles() {
             </table>
             <br />
 
-            <NavLink className="nav-link py-3 border-bottom rounded-0" to='/app/mis-vehiculos/agregar-vehiculo/'>
+            <NavLink className="nav-link py-3 border-bottom rounded-0" to='/admin/vehiculos/agregar-vehiculo/'>
               <button
                 className="btn btn-primary"
                 style={{

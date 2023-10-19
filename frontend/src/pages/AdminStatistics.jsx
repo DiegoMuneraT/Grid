@@ -1,11 +1,12 @@
+import NavBarAdmin from "components/NavBarAdmin";
 import BatteryConsumption from "components/grafics/battery/batteryConsumption";
 import BatteryVoltage from "components/grafics/battery/batteryVoltage";
-import NavBarApp from 'components/NavBarApp';
 
 const Statistics = () => {
   return (
     <>
-        <NavBarApp />
+        <NavBarAdmin />
+        
         <h1 style={{ textAlign: "center"}}>Estadísticas</h1>
 
         <div style={{ display: "flex", justifyContent: "space-between" }}>

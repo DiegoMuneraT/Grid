@@ -38,7 +38,7 @@ const Login = () => {
   }, [user]);
 
   return (
-    <body>
+    <>
       <NavBarLogin />
       <main className="page login-page">
         <section className="clean-block clean-form dark">
@@ -161,7 +161,7 @@ const Login = () => {
         </section>
       </main>
       <Footer />
-    </body>
+    </>
   );
 };
 

@@ -21,7 +21,7 @@ const Map = () => {
   });
 
   return (
-    <body>
+    <>
       <div
         style={{
           position: "absolute",
@@ -57,7 +57,7 @@ const Map = () => {
       </div>
       <NavBarApp />
       <div ref={mapContainer} style={{ zIndex: '1', right: '0',  width: '96.24%', height: '100%', position: 'absolute', overflowY: 'hidden' }}/>
-    </body>
+    </>
   );
 };
 export default Map;

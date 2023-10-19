@@ -49,7 +49,7 @@ export default function AddVehicle() {
   }
 
   return (
-    <body>
+    <>
       <main className="page service-page" style={{ background: '#f9f9f9', width: '100%', height: '100%', overflowX: 'hidden', }}>
         <NavBarApp />
 
@@ -140,7 +140,7 @@ export default function AddVehicle() {
         </section>
 
       </main>
-    </body>
+    </>
   )
 }
 

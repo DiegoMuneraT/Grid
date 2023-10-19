@@ -5,7 +5,7 @@ import TarjetasHome from "../components/TarjetasHome"
 
 export default function Home() {
   return (
-    <body style={{background: 'transparent',}}>
+    <>
         <NavBarHome/>
         <main className="page service-page" style={{background: 'var(--bs-body-bg)', }}>
             <section className="clean-block clean-services dark" style={{background: '#f9f9f9', padding: '0 0 100px'}}>
@@ -24,6 +24,6 @@ export default function Home() {
             </section>
         </main>
         <Footer/>
-    </body>
+    </>
   )
 }
