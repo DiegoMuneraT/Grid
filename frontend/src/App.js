@@ -7,7 +7,7 @@ import AboutUs from './pages/AboutUs'
 import Contact from './pages/Contact'
 import Login from './pages/Login'
 import Register from './pages/Register'
-import Map from './pages/Map'
+import MapView from './pages/MapView'
 import OwnVehicles from './pages/Own-vehicles'
 import Comments from './pages/Comments'
 import Statistics from './pages/Statistics'
@@ -43,7 +43,7 @@ function App() {
           path="app/inicio/"
           element={
             <ProtectedRoute>
-              <Map />
+              <MapView/>
             </ProtectedRoute>
           }
         />
