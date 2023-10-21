@@ -45,15 +45,9 @@ export default function OwnVehicles() {
 
   const [vehicles, setVehicles] = useState({});
 
-  //Obtener el usuario autenticado
-  const { user } = UserAuth();
-
-  //Obtener el id del usuario 
-  const userid = user.uid;
-
   const listVehicles = async () => {
     try {
-      const ans = await vehicleServer.listVehicles(userid);
+      const ans = await vehicleServer.adminListVehicles();
       const data = await ans.data
 
       setVehicles(data)
@@ -101,7 +95,7 @@ export default function OwnVehicles() {
       <section className="clean-block clean-blog-list dark" style={{ height: "100vh", overflowY: "hidden" }}>
         <div className="container">
           <div className="block-content table100" style={{ margin: '80px 0 0 80px', }}>
-            <h1 style={{ textAlign: "center" }}>Mis Vehiculos</h1>
+            <h1 style={{ textAlign: "center" }}>Vehiculos</h1>
             <table>
               <thead>
                 <tr>

@@ -19,3 +19,8 @@ export const createVehicle = async (newVehicle) => {
 export const modifyVehicle = async (id, data) => {
     return await vehicleApi.put("/"+id+"/", data)
 }
+
+
+export const adminListVehicles = async () => {
+    return await vehicleApi.get();
+}

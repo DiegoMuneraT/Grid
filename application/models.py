@@ -14,6 +14,7 @@ class Vehicle(models.Model):
     modelo = models.PositiveIntegerField()
     usuario = models.CharField(max_length=100)
     activo = models.BooleanField(default=True)
+    admin = models.CharField(max_length=100, default= '')
 
     def __str__(self):
         return self.placa
@@ -25,7 +26,7 @@ class Station(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
     elevation = models.FloatField()
-    charger_types = models.JSONField()
+    charger_types = models.CharField(max_length=200)
     number_of_chargers = models.IntegerField()
 
     def __str__(self):
@@ -95,3 +96,6 @@ class Operation(models.Model):
     AcZ = models.FloatField()
     humidity = models.FloatField()
     assist_level = models.IntegerField()
+
+    def __str__(self):
+        return str(self.vehicle_id)
