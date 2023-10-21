@@ -14,8 +14,6 @@ class StationSerializer(serializers.ModelSerializer):
 
 
 class OperationSerializer(serializers.ModelSerializer):
-    #file = serializers.FileField()
-    
     class Meta:
         model = Operation
         fields = "__all__"

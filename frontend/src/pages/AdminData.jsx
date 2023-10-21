@@ -21,20 +21,50 @@ export default function Comments() {
             f.append("files", archivos[index]);
         }
 
-        console.log(archivos)
-
         await stationServer.createStation(f);
     }
 
-    const enviarDatos = async (event) => {
+    const enviarDatos = (event) => {
         event.preventDefault();
-        const f = new FormData();
 
         for (let index = 0; index < archivos.length; index++) {
-            f.append("files", archivos[index]);
+            const f = archivos[index];
+            
+            const lector = new FileReader();
+            lector.onload = function(e){
+                const contenido = e.target.result;
+                crearJson(contenido)
+            }
+
+            lector.readAsText(f);
         }
 
-        await operationServer.createOperation(f);
+        const crearJson = async(contenido) =>{
+            const datos = contenido.split(/\r?\n|\r/);
+
+            const headers = datos[0].split(';');
+            
+            for(let fila = 1 ; fila < datos.length-1 ; fila++){
+                
+                const json = {};
+
+                const celdas = datos[fila].split(';');
+
+                for(let columna = 0 ; columna < celdas.length ; columna++){
+                    
+                    if (celdas[columna] === '') {
+                        continue;
+                    }
+
+                    json[headers[columna]] = celdas[columna];
+                }
+
+                await operationServer.createOperation(json);
+            }
+
+        }
+
+
     
     }
 

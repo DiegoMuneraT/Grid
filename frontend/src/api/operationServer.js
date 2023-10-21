@@ -7,6 +7,5 @@ const operationApi = axios.create({
 
 //Creacion de datos
 export const createOperation = async (newOperation) => {
-    return console.log(newOperation)
-    //return await operationApi.post("/", newOperation)
+    return await operationApi.post("/", newOperation)
 }
