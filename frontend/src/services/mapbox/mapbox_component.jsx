@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Stations } from "services/mapbox/data/stations";
 import mapboxgl from "mapbox-gl";
 
 const Map = () => {
-    const [lng, setLng] = useState(-75.56888);
-    const [lat, setLat] = useState(6.24281);
-    const [zoom, setZoom] = useState(12);
+    //const [lng, setLng] = useState(-75.56888);
+    //const [lat, setLat] = useState(6.24281);
+    //const [zoom, setZoom] = useState(12);
+    const lng = -75.56888
+    const lat = 6.24281
+    const zoom = 12
+    
 
     useEffect(() => {
         mapboxgl.accessToken = "pk.eyJ1IjoiZGllZ29tdW5lcmE3IiwiYSI6ImNsbWw3bWxrbzA4cGkycnBxYXNpMHpuZ3gifQ.0xmZY7JTLBK2q5QhDGmCVA";
@@ -24,15 +28,21 @@ const Map = () => {
 
             map.addLayer({
                 id: 'stations',
-                type: 'circle', // charging-stations
+                type: 'symbol', // charging-stations
                 source: 'stations',
-                paint: {
-                  'circle-color': '#c6d83b',
-                  'circle-radius': 6,
-                  'circle-stroke-width': 2,
-                  'circle-stroke-color': '#ffffff',
+                layout: {
+                    'icon-image': 'charging-station',
+                    'icon-size': 1,
+                    'text-field': ['get', 'name'],
+                    'text-font': ['DIN Pro Medium'],
+                    'text-size': 12,
+                    'text-offset': [0, 1],
+                    'text-anchor': 'top',
                 },
-              });
+                paint: {
+                    'text-color': '#bdc9db',
+                },
+            });
 
             const popup = new mapboxgl.Popup({
                 closeButton: false,

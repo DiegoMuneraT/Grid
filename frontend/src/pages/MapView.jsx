@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import NavBarApp from "../components/NavBarApp";
 import Map from "services/mapbox/mapbox_component";
 
