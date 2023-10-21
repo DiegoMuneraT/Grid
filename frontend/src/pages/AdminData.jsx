@@ -1,15 +1,42 @@
 import NavBarAdmin from "../components/NavBarAdmin";
 import { useState } from "react";
 
+import * as stationServer from "api/stationServer";
+import * as operationServer from "api/operationServer";   
+
 export default function Comments() {
 
     const [archivos, setArchivos] = useState(null);
 
 
-    const handleFileChange = (e) => {
-
+    const subirArchivos = e => {
+        setArchivos(e);
     }
 
+    const enviarEstaciones = async (event) => {
+        event.preventDefault();
+        const f = new FormData();
+
+        for (let index = 0; index < archivos.length; index++) {
+            f.append("files", archivos[index]);
+        }
+
+        console.log(archivos)
+
+        await stationServer.createStation(f);
+    }
+
+    const enviarDatos = async (event) => {
+        event.preventDefault();
+        const f = new FormData();
+
+        for (let index = 0; index < archivos.length; index++) {
+            f.append("files", archivos[index]);
+        }
+
+        await operationServer.createOperation(f);
+    
+    }
 
 
     return (
@@ -21,7 +48,7 @@ export default function Comments() {
                     <div className="container">
                         <div className="block-content" style={{margin: '80px 0 0 80px',}}>
 
-                            <form onSubmit={handleFileChange} style={{padding: "40px 0"}}>
+                            <form style={{padding: "40px 0"}}>
 
                                 <div className="mb-3">
                                     <label className="form-label" for="station">
@@ -30,9 +57,10 @@ export default function Comments() {
                                     <input
                                     className="form-control item"
                                     type="file"
-                                    id="file"
-                                    name="file"
+                                    name="files"
+                                    multiple
                                     data-bs-theme="light"
+                                    onChange={(e) => subirArchivos(e.target.files)}
 
                                     />
                                 </div>
@@ -45,13 +73,14 @@ export default function Comments() {
                                     borderColor: "var(--bs-emphasis-color)",
                                     borderTopColor: "var(--bs-body-color)",
                                     }}
+                                    onClick={enviarEstaciones}
                                 >
                                     Agregar Estacion de carga
                                 </button>
 
                             </form>
 
-                            <form action="" style={{padding: "40px 0"}}>
+                            <form style={{padding: "40px 0"}}>
 
                                 <div className="mb-3">
                                     <label className="form-label" for="data">
@@ -63,6 +92,9 @@ export default function Comments() {
                                     id="file"
                                     name="file"
                                     data-bs-theme="light"
+                                    multiple
+
+                                    onChange={(e) => subirArchivos(e.target.files)}
                                     />
                                 </div>
 
@@ -74,6 +106,7 @@ export default function Comments() {
                                     borderColor: "var(--bs-emphasis-color)",
                                     borderTopColor: "var(--bs-body-color)",
                                     }}
+                                    onClick={enviarDatos}
                                 >
                                     Agregar Datos de vehiculos
                                 </button>

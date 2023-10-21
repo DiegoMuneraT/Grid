@@ -2,7 +2,7 @@ import axios from "axios";
 
 //Direccion de la API
 const vehicleApi = axios.create({
-    baseURL:'http://localhost:8000/vehicles/api/vehicle/'
+    baseURL:'http://localhost:8000/api/vehicle/'
 })
 
 //Obtencion de vehiculos
