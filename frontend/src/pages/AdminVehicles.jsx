@@ -10,13 +10,23 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 
-const Table = ({ modelo, marca, placa, id}) => {
+const getUsuario = () => {
 
   //Obtener el usuario autenticado
   const { user } = UserAuth();
 
   //Obtener el id del usuario 
   const userid = user.uid;
+
+  return (userid)
+
+}
+
+
+const Table = ({ modelo, marca, placa, activo, id}) => {
+
+  //Obtener el id del usuario 
+  const userid = getUsuario();
 
   const update = async (id) => {
     const data = {placa: placa, modelo: modelo, marca: marca, usuario: userid, activo: false}
@@ -35,19 +45,25 @@ const Table = ({ modelo, marca, placa, id}) => {
   <tr>
     <th className="column">{marca}</th> 
     <th className="column">{modelo}</th>
-    <th className="column">{placa} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<IconButton aria-label="check"><CheckCircleIcon/></IconButton><IconButton aria-label="cancel" onClick={() => {update(id)}}><CancelIcon/></IconButton></th>
+    <th className="column">{placa}</th>
+    <th className="column">{activo ? <span style={{color: 'green'}}>Activo</span> : <p style={{color: 'red'}}>Inactivo</p>}</th>
+    <th><IconButton aria-label="check"><CheckCircleIcon/></IconButton><IconButton aria-label="cancel" onClick={() => {update(id)}}><CancelIcon/></IconButton></th>
+    
   </tr>
   </>
   )
-}
+} 
 
 export default function OwnVehicles() {
 
   const [vehicles, setVehicles] = useState({});
 
+  //Obtener el id del usuario
+  const userid = getUsuario()
+
   const listVehicles = async () => {
     try {
-      const ans = await vehicleServer.adminListVehicles();
+      const ans = await vehicleServer.adminListVehicles(userid);
       const data = await ans.data
 
       setVehicles(data)
@@ -78,6 +94,7 @@ export default function OwnVehicles() {
           modelo={vehicles[key].modelo}
           marca={vehicles[key].marca}
           placa={vehicles[key].placa}
+          activo={vehicles[key].activo}
           id = {vehicles[key].id}
         />
       );
@@ -102,6 +119,8 @@ export default function OwnVehicles() {
                   <th className="column">Marca</th>
                   <th className="column">Modelo</th>
                   <th className="column">Placa</th>
+                  <th className="column">Activo</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>

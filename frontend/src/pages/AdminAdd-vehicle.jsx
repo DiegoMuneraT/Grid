@@ -2,8 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "context/AuthContext";
 import { useState } from "react";
 
-import NavBarApp from "../components/NavBarApp";
 import * as vehicleServer from "api/vehicleServer";
+import NavBarAdmin from "components/NavBarAdmin";
 
 
 export default function AddVehicle() {
@@ -18,8 +18,8 @@ export default function AddVehicle() {
 
   //Datos del formulario para agregar vehiculo
   const [data, setData] = useState({
-    modelo: '',
-    marca: '',
+    // modelo: '',
+    // marca: '',
     placa: '',
     usuario: '',
   })
@@ -31,7 +31,7 @@ export default function AddVehicle() {
     setData({
       ...data,
       [name]: value,
-      usuario: userid,
+      admin: userid,
     });
   }
 
@@ -40,13 +40,15 @@ export default function AddVehicle() {
     event.preventDefault();
 
     try{
-      const ans = await vehicleServer.createVehicle(data);
+      const ans = await vehicleServer.AdminCreateVehicle(data);
 
       if(ans === undefined){ 
-        alert("El vehiculo introducido ya se encuentra registrado!");
-      }else{
-        navigate('/app/mis-vehiculos/')
+        alert("El vehiculo no se encuentra registrado");
+      }else if (ans === 409){
+        alert("El vehiculo se encuentra registrado por otro administrador");
       }
+      //navigate('/admin/vehiculos/')
+        
 
     }catch(error){
       console.log(error);
@@ -56,13 +58,18 @@ export default function AddVehicle() {
   return (
     <>
       <main className="page service-page" style={{ background: '#f9f9f9', width: '100%', height: '100%', overflowX: 'hidden', }}>
-        <NavBarApp />
+        <NavBarAdmin />
 
         <section className="clean-block clean-blog-list dark" style={{ height: "100vh", overflowY: "hidden" }}>
           <div className="container">
             <div className="block-content" style={{ margin: '80px 0 0 80px', }}>
               <form style={{ borderTopColor: "var(--bs-emphasis-color)" }}>
+
                 <div className="mb-3">
+                  <p>Para agregar un vehiculo, ten en cuenta que debe estar registrado previamente por algun usuario.</p>
+                </div>
+
+                {/* <div className="mb-3">
                   <label className="form-label">
                     Marca <b>*</b> 
                   </label>
@@ -88,7 +95,8 @@ export default function AddVehicle() {
                     onChange={handleInputChange}
                     data-bs-theme="light"
                   />
-                </div>
+                </div> */}
+                
                 <div className="mb-3">
                   <label className="form-label">
                     Placa <b>*</b>
@@ -123,7 +131,7 @@ export default function AddVehicle() {
                     Agregar Vehiculo
                   </button>
 
-                  <Link to="/app/mis-vehiculos/"><button
+                  <Link to="/admin/vehiculos/"><button
                     className="btn btn-primary"
                     type="submit"
                     style={{

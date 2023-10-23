@@ -15,6 +15,7 @@ import AdminMap from './pages/AdminMap'
 import AdminStatistics from './pages/AdminStatistics'
 import AdminVehicles from './pages/AdminVehicles'
 import AdminData from './pages/AdminData'
+import AdminAddVehicle from 'pages/AdminAdd-vehicle'
 import Error404 from './errors/Error404'
 import AddVehicle from './pages/Add-vehicle'
 import { AuthContextProvider } from './context/AuthContext'
@@ -105,6 +106,15 @@ function App() {
           element={
             <ProtectedRoute>
               <AdminVehicles/>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="admin/vehiculos/agregar-vehiculo/"
+          element={
+            <ProtectedRoute>
+              <AdminAddVehicle/>
             </ProtectedRoute>
           }
         />
