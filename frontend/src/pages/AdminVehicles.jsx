@@ -46,7 +46,7 @@ const Table = ({ modelo, marca, placa, activo, id}) => {
     <th className="column">{marca}</th> 
     <th className="column">{modelo}</th>
     <th className="column">{placa}</th>
-    <th className="column">{activo ? <span style={{color: 'green'}}>Activo</span> : <p style={{color: 'red'}}>Inactivo</p>}</th>
+    <th className="column">{activo ? <span style={{color: 'green'}}>Activo</span> : <span style={{color: 'red'}}>Inactivo</span>}</th>
     <th><IconButton aria-label="check"><CheckCircleIcon/></IconButton><IconButton aria-label="cancel" onClick={() => {update(id)}}><CancelIcon/></IconButton></th>
     
   </tr>

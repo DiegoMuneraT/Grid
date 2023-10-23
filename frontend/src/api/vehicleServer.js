@@ -23,7 +23,12 @@ export const createVehicle = async (newVehicle) => {
     for(let i = 0; i < data.length; i++){
         
         if(data[i].placa === newVehicle.placa){
-          return;
+            if(data[i].activo === false){
+                data[i].activo = true
+                return await vehicleApi.put("/"+data[i].id+"/", data[i])
+            } else {
+                return;
+            }
         }
       
     }
