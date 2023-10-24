@@ -8,6 +8,9 @@ import { UserAuth } from "context/AuthContext";
 import IconButton from '@mui/material/IconButton';
 import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 
 const getUsuario = () => {
@@ -49,7 +52,18 @@ const Table = ({ modelo, marca, placa, activo, id}) => {
     <th className="column">{modelo}</th>
     <th className="column">{placa}</th>
     <th className="column">{activo ? <span style={{color: 'green'}}>Activo</span> : <span style={{color: 'red'}}>Inactivo</span>}</th>
-    {show ? (<th><IconButton aria-label="check" color="success"><CheckCircleIcon/></IconButton><IconButton aria-label="cancel" onClick={() => {update(id)}} color="error"><CancelIcon/></IconButton></th>): (<th></th>)}
+    {show ? (
+      <th>
+        <IconButton aria-label="check" color="success">
+          <CheckCircleIcon/>
+        </IconButton>
+        <IconButton aria-label="cancel" onClick={() => {update(id)}} color="error">
+          <CancelIcon/>
+        </IconButton>
+      </th>
+    ): (
+      <th></th>
+    )}
   </tr>
   </>
   )
@@ -58,16 +72,29 @@ const Table = ({ modelo, marca, placa, activo, id}) => {
 export default function OwnVehicles() {
 
   const [vehicles, setVehicles] = useState({});
+  const [filtro, setFiltro] = useState('');
 
   //Obtener el id del usuario
   const userid = getUsuario()
 
   const listVehicles = async () => {
     try {
-      const ans = await vehicleServer.adminListVehicles(userid);
-      const data = await ans.data
+      if(filtro === ''){
+        const ans = await vehicleServer.adminListVehicles(userid);
+        const data = await ans.data
+        setVehicles(data)
 
-      setVehicles(data)
+      } else if(filtro === "activo"){
+        const ans = await vehicleServer.adminListVehiclesFiltro(userid, true);
+        const data = await ans.data
+        setVehicles(data)
+
+      } else if(filtro === "inactivo"){
+        const ans = await vehicleServer.adminListVehiclesFiltro(userid, false);
+        const data = await ans.data
+        setVehicles(data)
+        
+      }
 
     } catch (error) {
       console.log(error);
@@ -83,7 +110,7 @@ export default function OwnVehicles() {
     const keys = Object.keys(vehicles)
   
     if (keys.length === 0) {
-      return <><br/><p style={{ justifyContent: 'left'}}>Aun no hay vehiculos agregados.</p></>
+      return <><span style={{ justifyContent: 'left'}}>Aun no hay vehiculos agregados.</span></>
 
     }
 
@@ -105,6 +132,10 @@ export default function OwnVehicles() {
 
   };
 
+  const handleChange = (event) => {
+    setFiltro(event.target.value);
+    listVehicles()
+  };
 
   return (
     <main className="page service-page" style={{ background: '#f9f9f9', width: '100%', height: '100%', overflowX: 'hidden', }}>
@@ -114,6 +145,22 @@ export default function OwnVehicles() {
         <div className="container">
           <div className="block-content table100" style={{ margin: '80px 0 0 80px', }}>
             <h1 style={{ textAlign: "center" }}>Vehiculos</h1>
+            <div>
+              <FormControl sx={{ m: 1, minWidth: 120 }}>
+                <Select
+                  value={filtro}
+                  onChange={handleChange}
+                  displayEmpty
+                  inputProps={{ 'aria-label': 'Without label' }}
+                >
+                  <MenuItem value=''>
+                    <em>Todos</em>
+                  </MenuItem>
+                  <MenuItem value="activo">Activos</MenuItem>
+                  <MenuItem value="inactivo">Inactivos</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
             <table>
               <thead>
                 <tr>
@@ -121,7 +168,7 @@ export default function OwnVehicles() {
                   <th className="column">Modelo</th>
                   <th className="column">Placa</th>
                   <th className="column">Activo</th>
-                  <th></th>
+                  <th style={{width: "85px"}}></th>
                 </tr>
               </thead>
               <tbody>
@@ -129,21 +176,22 @@ export default function OwnVehicles() {
               </tbody>
               
             </table>
-            <br />
 
-            <NavLink className="nav-link py-3 border-bottom rounded-0" to='/admin/vehiculos/agregar-vehiculo/'>
-              <button
-                className="btn btn-primary"
-                style={{
-                  background: "var(--bs-emphasis-color)",
-                  borderColor: "var(--bs-emphasis-color)",
-                  borderTopColor: "var(--bs-body-color)",
-                  marginTop: "20px",
-                }}>
-                Agregar un vehiculo
-              </button>
-            </NavLink>
+            <div style={{margin: "40px 0 20px 0"}}>
+              <NavLink className="nav-link rounded-0" to='/admin/vehiculos/agregar-vehiculo/' style={{display: "contents"}}>
+                <button
+                  className="btn btn-primary"
+                  style={{
+                    background: "var(--bs-emphasis-color)",
+                    borderColor: "var(--bs-emphasis-color)",
+                    borderTopColor: "var(--bs-body-color)",
+                  }}>
+                  Agregar un vehiculo
+                </button>
+              </NavLink>
+            </div>
 
+            <hr/>
 
           </div>
         </div>

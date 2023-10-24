@@ -1,22 +1,34 @@
+<<<<<<< HEAD
 import NavBarAdmin from "components/NavBarAdmin";
 import BatteryConsumption from "components/grafics/battery/Consumption";
+=======
+import BatteryConsumption from "components/grafics/battery/batteryConsumption";
+>>>>>>> eafd8a4543696f04c021ed0191bb2fa94223beeb
 import BatteryVoltage from "components/grafics/battery/batteryVoltage";
+import BatteryPowerElectric from "components/grafics/battery/batteryPowerElectric";
+import BatteryTemperature from "components/grafics/battery/batteryTemperature";
+import NavBarAdmin from "components/NavBarAdmin";
 
 const Statistics = () => {
   return (
     <>
-        <NavBarAdmin />
-        
-        <h1 style={{ textAlign: "center"}}>Estadísticas</h1>
-
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div style={{ flex: 1 }}>
-            <BatteryConsumption />
-          </div>
-          <div style={{ flex: 1 }}>
-            <BatteryVoltage />
-          </div>
+      <NavBarAdmin />
+      
+      <h1 style={{ textAlign: "center"}}>Estadísticas</h1>
+      <div style={{ display: "grid", justifyContent: "space-between",gridTemplateColumns: "repeat(2, 1fr)"}}>
+        <div style={{ flex: 1 }}>
+          <BatteryConsumption />
         </div>
+        <div style={{ flex: 1 }}>
+          <BatteryVoltage />
+        </div>
+        <div style={{ flex: 1 }}>
+          <BatteryPowerElectric />
+        </div>
+        <div style={{ flex: 1 }}>
+          <BatteryTemperature />
+        </div>
+      </div>
     </>
   );
 };

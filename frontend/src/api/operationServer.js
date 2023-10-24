@@ -52,7 +52,6 @@ export const getVoltageDataForVehicle = async (vehicleId) => {
       throw error;
     }
   };
-
  // Obtener datos de consumo
 export const getConsumptionDataForVehicle = async (vehicleId) => {
   try {
@@ -91,3 +90,21 @@ export const getDrivetimeDataForVehicle = async (vehicleId) => {
   }
 };
   
+// Obtener datos de temperatura
+export const getTemperatureForVehicle = async (vehicleId) => {
+  try {
+    const response = await operationApi.get('/');
+    const allData = response.data;
+
+    const filteredData = filterDataByVehicleId(allData, vehicleId);
+
+    const temperatureData = filteredData.map(entry => ({
+      timestamp: entry.timestamp,
+      batt_temp: entry.batt_temp
+    }));
+
+    return temperatureData;
+  } catch (error) {
+    throw error;
+  }
+};

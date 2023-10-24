@@ -19,6 +19,12 @@ export const adminListVehicles = async (usuario) => {
     return await vehicleApi.get("/?admin="+usuario);
 }
 
+export const adminListVehiclesFiltro = async (usuario, activo) => {
+    return await vehicleApi.get("/?admin="+usuario+'&activo='+activo);
+}
+
+
+
 //Creacion de vehiculos
 export const createVehicle = async (newVehicle) => {
     const query = await vehicleApi.get("/")
