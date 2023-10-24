@@ -9,7 +9,7 @@ const Statistics = () => {
         <NavBarApp />
         <h1 style={{ textAlign: "center"}}>Estadísticas</h1>
 
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: "grid", justifyContent: "space-between",gridTemplateColumns: "repeat(2, 1fr)"}}>
           <div style={{ flex: 1 }}>
             <BatteryConsumption />
           </div>
