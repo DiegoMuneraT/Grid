@@ -1,4 +1,7 @@
+//@components
 import NavBarApp from "../components/NavBarApp";
+import VehicleInfo from "components/VehicleInfo";
+//@services
 import Map from "services/mapbox/mapbox_component";
 
 const MapView = () => {
@@ -18,24 +21,8 @@ const MapView = () => {
           zIndex: '2',
         }}
       >
-        <p
-          style={{
-            color: "var(--bs-body-bg)",
-            marginBottom: "0px",
-            opacity: "1",
-          }}
-        >
-          Vehiculo
-        </p>
-        <p
-          style={{
-            color: "var(--bs-body-bg)",
-            marginBottom: "0px",
-            opacity: "1",
-          }}
-        >
-          Placa
-        </p>
+        <VehicleInfo data="vehiculo"/>
+        <VehicleInfo data="placa"/>
       </div>
       <NavBarApp />
       <Map/>

@@ -1,9 +1,6 @@
 //@components
 import Comentarios from "../components/Comentarios";
 import NavBarApp from "../components/NavBarApp";
-import VehicleInfo from "../pages/vehicletesting";
-
-// Hay que eliminar la linea 20, VehicleInfo y su importacion. Solo es para probar el contexto
 
 export default function Comments() {
     return (
@@ -17,7 +14,6 @@ export default function Comments() {
                             <Comentarios/>
                             <Comentarios/>
                             <Comentarios/>
-                            <VehicleInfo/>
                         </div>
                     </div>
                 </section>
