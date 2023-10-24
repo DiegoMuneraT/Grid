@@ -7,23 +7,23 @@ import NavBarApp from 'components/NavBarApp';
 const Statistics = () => {
   return (
     <>
-        <NavBarApp />
-        <h1 style={{ textAlign: "center"}}>Estadísticas</h1>
+      <NavBarApp />
+      <h1 style={{ textAlign: "center"}}>Estadísticas</h1>
 
-        <div style={{ display: "grid", justifyContent: "space-between",gridTemplateColumns: "repeat(2, 1fr)"}}>
-          <div style={{ flex: 1 }}>
-            <BatteryConsumption />
-          </div>
-          <div style={{ flex: 1 }}>
-            <BatteryVoltage />
-          </div>
-          <div style={{ flex: 1 }}>
-            <BatteryPowerElectric />
-          </div>
-          <div style={{ flex: 1 }}>
-            <BatteryTemperature />
-          </div>
+      <div style={{ display: "grid", justifyContent: "space-between",gridTemplateColumns: "repeat(2, 1fr)"}}>
+        <div style={{ flex: 1 }}>
+          <BatteryConsumption />
         </div>
+        <div style={{ flex: 1 }}>
+          <BatteryVoltage />
+        </div>
+        <div style={{ flex: 1 }}>
+          <BatteryPowerElectric />
+        </div>
+        <div style={{ flex: 1 }}>
+          <BatteryTemperature />
+        </div>
+      </div>
     </>
   );
 };

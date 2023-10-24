@@ -72,7 +72,7 @@ const BatteryTemperature = () => {
       <section className="clean-block clean-blog-list dark" style={{ height: '100vh', overflowY: 'hidden' }}>
         <div className="container">
           <div className="block-content" style={{ margin: '80px 0 0 80px', width: '650px', height: '600px' }}>
-            <h2 style={{ textAlign: 'center' }}>Temperatura Historica</h2>
+            <h2 style={{ textAlign: 'center' }}>Temperatura Histórica</h2>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               <div style={{ width: '80%', height: '300px', position: 'relative', top: '10%', left: '0%' }}>
                 <Line data={data} options={options} />
