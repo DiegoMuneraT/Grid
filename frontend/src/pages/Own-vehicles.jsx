@@ -24,6 +24,7 @@ const getUsuario = () => {
 
 }
 
+// Setea el id del vehiculo seleccionado (SIN TERMINAR)
 const updateCurrentVehicle = (vehicleId) => {
   const { setCurrentVehicleId } = UserVehicle();
   setCurrentVehicleId(vehicleId);
