@@ -52,4 +52,42 @@ export const getVoltageDataForVehicle = async (vehicleId) => {
       throw error;
     }
   };
+
+ // Obtener datos de consumo
+export const getConsumptionDataForVehicle = async (vehicleId) => {
+  try {
+    const response = await operationApi.get('/');
+    const allData = response.data;
+
+    const filteredData = filterDataByVehicleId(allData, vehicleId);
+
+    const consumptionData = filteredData.map(entry => ({
+      timestamp: entry.timestamp,
+      consumption: entry.consumption
+    }));
+
+    return consumptionData;
+  } catch (error) {
+    throw error;
+  }
+};
+ 
+// Obtener datos de tiempo de conducción
+export const getDrivetimeDataForVehicle = async (vehicleId) => {
+  try {
+    const response = await operationApi.get('/');
+    const allData = response.data;
+
+    const filteredData = filterDataByVehicleId(allData, vehicleId);
+
+    const drivetimeData = filteredData.map(entry => ({
+      timestamp: entry.timestamp,
+      drivetime: entry.drivetime
+    }));
+
+    return drivetimeData;
+  } catch (error) {
+    throw error;
+  }
+};
   
