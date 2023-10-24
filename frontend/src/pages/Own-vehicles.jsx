@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 //@components
 import * as vehicleServer from "api/vehicleServer";
 import NavBarApp from "../components/NavBarApp";
-import { UserAuth } from "context/AuthContext";
 //@mui
 import IconButton from '@mui/material/IconButton';
 import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+//@context
+import { UserAuth } from "context/AuthContext";
+import { UserVehicle } from "context/CarContext";
 
 const getUsuario = () => {
 
@@ -21,6 +23,11 @@ const getUsuario = () => {
   return (userid)
 
 }
+
+const updateCurrentVehicle = (vehicleId) => {
+  const { setCurrentVehicleId } = UserVehicle();
+  setCurrentVehicleId(vehicleId);
+};
 
 const Table = ({ modelo, marca, placa, id}) => {
 
@@ -42,15 +49,36 @@ const Table = ({ modelo, marca, placa, id}) => {
     
   }
   return (
-  <>
-  <tr onClick={() => {setShow(!show)}}>
-    <th className="column">{marca}</th> 
-    <th className="column">{modelo}</th>
-    <th className="column">{placa}</th>
-    {show ? (<th><IconButton aria-label="check" color="success"><CheckCircleIcon/></IconButton><IconButton aria-label="cancel" onClick={() => {update(id)}} color="error"><CancelIcon/></IconButton></th>): (<th></th>)}
-  </tr>
-  </>
-  )
+    <>
+      <tr
+        onClick={() => {
+          setShow(!show);
+        }}
+      >
+        <th className="column">{marca}</th>
+        <th className="column">{modelo}</th>
+        <th className="column">{placa}</th>
+        {show ? (
+          <th>
+            <IconButton aria-label="check" color="success">
+              <CheckCircleIcon onClick={updateCurrentVehicle(id)} />
+            </IconButton>
+            <IconButton
+              aria-label="cancel"
+              onClick={() => {
+                update(id);
+              }}
+              color="error"
+            >
+              <CancelIcon />
+            </IconButton>
+          </th>
+        ) : (
+          <th></th>
+        )}
+      </tr>
+    </>
+  );
 }
 
 const OwnVehicles = () => {

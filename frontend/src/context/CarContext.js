@@ -18,7 +18,7 @@ const getUser = () => {
     if (user === null) {
         return undefined;
     }
-    
+
     const userid = user.uid;
     return (userid);
 }
@@ -26,6 +26,7 @@ const getUser = () => {
 export function VehicleContextProvider({ children }) {
     const [currentVehicle, setCurrentVehicle] = useState({});
     const [loading, setLoading] = useState(true);
+    const [currentVehicleId, setCurrentVehicleId] = useState(null);
 
     // Tomar el id del usuario
     const userid = getUser();
@@ -33,7 +34,7 @@ export function VehicleContextProvider({ children }) {
     // Cargar el vehículo del usuario
     useEffect(() => {
         if (userid !== undefined) {
-            listVehicles();
+            listVehicles(currentVehicleId);
         } else {
             setLoading(false);
         }
@@ -52,12 +53,26 @@ export function VehicleContextProvider({ children }) {
         }
     }
 
+    // Función para obtener un vehículo según su id
+    const getVehicle = async (vehicleId) => {
+        try {
+            const ans = await vehicleServer.getVehicle(vehicleId);
+            const data = ans.data;
+            console.log(data)
+            setCurrentVehicle(data);
+            setLoading(false);
+        } catch (error) {
+            console.log(error);
+            setLoading(false);
+        }
+    }
+
     if (loading) {
         console.log("Cargando...");
     }
 
     return(
-        <VehicleContext.Provider value={{ currentVehicle, setCurrentVehicle }}>
+        <VehicleContext.Provider value={{ currentVehicle, setCurrentVehicle, setCurrentVehicleId }}>
             {children}
         </VehicleContext.Provider>
     );

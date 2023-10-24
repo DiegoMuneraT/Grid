@@ -10,6 +10,10 @@ export const listVehicles = async (usuario) => {
     return await vehicleApi.get("/?usuario="+usuario+'&activo=true');
 }
 
+export const getVehicle = async (id) => {
+    // obtener un vehiculo segun su id
+}
+
 export const adminListVehicles = async (usuario) => {
     return await vehicleApi.get("/?admin="+usuario);
 }
