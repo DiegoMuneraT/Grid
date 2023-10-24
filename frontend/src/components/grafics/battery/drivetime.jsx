@@ -59,16 +59,11 @@ const Drivetime = () => {
     <div>
       <section className="clean-block clean-blog-list dark" style={{ height: '100vh', overflowY: 'hidden' }}>
         <div className="container">
-          <div className="block-content" style={{ margin: '80px 0 0 80px', width: '650px', height: '600px' }}>
+          <div className="block-content" style={{ margin: '80px 0 0 80px', width: '100%' }}>
             <h2 style={{ textAlign: 'center' }}>Tiempo de Manejo Histórico</h2>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <div style={{ width: '80%', height: '300px', position: 'relative', top: '10%', left: '0%' }}>
+              <div style={{ width: '100%', height: '600px', position: 'relative' }}>
                 <Line data={data} options={options} />
-              </div>
-              <div style={{ width: '20%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgray', padding: '10px' }}>
-                <div style={{ textAlign: 'center' }}>
-                  <h6 style={{ margin: '0', padding: '0' }}>{currentDrivetime} Tiempo de Manejo actual</h6>
-                </div>
               </div>
             </div>
           </div>
@@ -79,4 +74,3 @@ const Drivetime = () => {
 };
 
 export default Drivetime;
-
