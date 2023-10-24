@@ -7,7 +7,7 @@ const VehicleInfo = (data) => {
     const { currentVehicle } = UserVehicle()
 
     if (!currentVehicle || Object.keys(currentVehicle).length === 0){
-        console.log('Cargando vehiculo: ', currentVehicle)
+        console.log('Cargando vehiculo... ', currentVehicle)
         return <div>Loading...</div>;
 
     }
