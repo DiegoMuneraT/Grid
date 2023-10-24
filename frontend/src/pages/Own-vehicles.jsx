@@ -23,6 +23,8 @@ const getUsuario = () => {
 
 const Table = ({ modelo, marca, placa, id}) => {
 
+  const [show, setShow] = useState(false);
+
   //Obtener el id del usuario 
   const userid = getUsuario();
 
@@ -40,17 +42,17 @@ const Table = ({ modelo, marca, placa, id}) => {
   }
   return (
   <>
-  <tr>
+  <tr onClick={() => {setShow(!show)}}>
     <th className="column">{marca}</th> 
     <th className="column">{modelo}</th>
     <th className="column">{placa}</th>
-    <th><IconButton aria-label="check"><CheckCircleIcon/></IconButton><IconButton aria-label="cancel" onClick={() => {update(id)}}><CancelIcon/></IconButton></th>
+    {show ? (<th><IconButton aria-label="check" color="success"><CheckCircleIcon/></IconButton><IconButton aria-label="cancel" onClick={() => {update(id)}} color="error"><CancelIcon/></IconButton></th>): (<th></th>)}
   </tr>
   </>
   )
 }
 
-export default function OwnVehicles() {
+const OwnVehicles = () => {
 
   const [vehicles, setVehicles] = useState({});
 
@@ -146,3 +148,4 @@ export default function OwnVehicles() {
   )
 }
 
+export default OwnVehicles;

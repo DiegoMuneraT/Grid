@@ -13,6 +13,7 @@ export default function Comments() {
         setArchivos(e);
     }
 
+    //Enviar las estaciones de carga a la base de datos
     const enviarEstaciones = async (event) => {
         event.preventDefault();
         const f = new FormData();
@@ -24,9 +25,11 @@ export default function Comments() {
         await stationServer.createStation(f);
     }
 
+    //Enviar los datos de operations a la base de datos
     const enviarDatos = (event) => {
         event.preventDefault();
 
+        //Se recorren los archivos subidos
         for (let index = 0; index < archivos.length; index++) {
             const f = archivos[index];
             
@@ -39,6 +42,8 @@ export default function Comments() {
             lector.readAsText(f);
         }
 
+
+        //Se crea el json con los datos del archivo
         const crearJson = async(contenido) =>{
             const datos = contenido.split(/\r?\n|\r/);
 
@@ -52,6 +57,7 @@ export default function Comments() {
 
                 for(let columna = 0 ; columna < celdas.length ; columna++){
                     
+                    //Si el campo esta vacio, no se agrega al json
                     if (celdas[columna] === '') {
                         continue;
                     }

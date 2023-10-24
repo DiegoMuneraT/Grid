@@ -18,8 +18,6 @@ export default function AddVehicle() {
 
   //Datos del formulario para agregar vehiculo
   const [data, setData] = useState({
-    // modelo: '',
-    // marca: '',
     placa: '',
     usuario: '',
   })
@@ -47,7 +45,8 @@ export default function AddVehicle() {
       }else if (ans === 409){
         alert("El vehiculo se encuentra registrado por otro administrador");
       }
-      //navigate('/admin/vehiculos/')
+      
+      navigate('/admin/vehiculos/')
         
 
     }catch(error){
@@ -68,34 +67,6 @@ export default function AddVehicle() {
                 <div className="mb-3">
                   <p>Para agregar un vehiculo, ten en cuenta que debe estar registrado previamente por algun usuario.</p>
                 </div>
-
-                {/* <div className="mb-3">
-                  <label className="form-label">
-                    Marca <b>*</b> 
-                  </label>
-                  <input
-                    className="form-control item"
-                    name="marca"
-                    value={data.marca}
-                    required
-                    onChange={handleInputChange}
-                    data-bs-theme="light"
-                  />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">
-                    Modelo <b>*</b>
-                  </label>
-                  <input
-                    className="form-control item"
-                    type="number"
-                    name="modelo"
-                    required
-                    value={data.modelo}
-                    onChange={handleInputChange}
-                    data-bs-theme="light"
-                  />
-                </div> */}
                 
                 <div className="mb-3">
                   <label className="form-label">

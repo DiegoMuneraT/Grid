@@ -21,7 +21,6 @@ const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
-  console.log(user);
 
   // Iniciar sesión con Google
   const googleSignIn = () => {
@@ -41,7 +40,6 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log(currentUser);
     });
     return () => {
       unsubscribe();

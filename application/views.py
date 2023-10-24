@@ -9,7 +9,7 @@ class VehicleView(viewsets.ModelViewSet):
     serializer_class = VehicleSerializer
     queryset = Vehicle.objects.all()
     filter_backends = [DjangoFilterBackend]
-    filterset_fields =  ['usuario', 'activo',]
+    filterset_fields =  ['usuario', 'activo', 'admin']
 
 
 class StationView(viewsets.ModelViewSet):
