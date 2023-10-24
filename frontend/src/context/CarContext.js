@@ -14,6 +14,11 @@ const VehicleContext = createContext({});
 
 const getUser = () => {
     const { user } = UserAuth();
+
+    if (user === null) {
+        return undefined;
+    }
+    
     const userid = user.uid;
     return (userid);
 }
