@@ -1,7 +1,7 @@
 // @react
 import { Routes, Route } from 'react-router-dom'
 
-// Components
+//@components
 import Home from './pages/Home'
 import AboutUs from './pages/AboutUs'
 import Contact from './pages/Contact'
@@ -20,7 +20,7 @@ import Error404 from './errors/Error404'
 import AddVehicle from './pages/Add-vehicle'
 import { AuthContextProvider } from './context/AuthContext'
 import ProtectedRoute from './components/authListener/ProtectedRoute'
-
+import { VehicleContextProvider } from 'context/CarContext'
 // Styled components
 import './App.css'
 import 'bootstrap/dist/js/bootstrap.min.js';
@@ -32,103 +32,104 @@ import './assets/css/vanilla-zoom.min.css';
 function App() {
   return (
     <AuthContextProvider>
-      <Routes>
-        <Route path="*" element={<Error404 />} />
-        <Route path="" element={<Home />} />
-        <Route path="acerca-de-nosotros/" element={<AboutUs />} />
-        <Route path="contacto/" element={<Contact />} />
-        <Route path="iniciar-sesion/" element={<Login />} />
-        <Route path="registro/" element={<Register />} />
+      <VehicleContextProvider>
+        <Routes>
+          <Route path="*" element={<Error404 />} />
+          <Route path="" element={<Home />} />
+          <Route path="acerca-de-nosotros/" element={<AboutUs />} />
+          <Route path="contacto/" element={<Contact />} />
+          <Route path="iniciar-sesion/" element={<Login />} />
+          <Route path="registro/" element={<Register />} />
 
-        <Route
-          path="app/inicio/"
-          element={
-            <ProtectedRoute>
-              <MapView/>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="app/mis-vehiculos/"
-          element={
-            <ProtectedRoute>
-              <OwnVehicles />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="app/inicio/"
+            element={
+              <ProtectedRoute>
+                <MapView />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="app/mis-vehiculos/"
+            element={
+              <ProtectedRoute>
+                <OwnVehicles />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="app/mis-vehiculos/agregar-vehiculo/"
-          element={
-            <ProtectedRoute>
-              <AddVehicle />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="app/mis-vehiculos/agregar-vehiculo/"
+            element={
+              <ProtectedRoute>
+                <AddVehicle />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="app/sugerencias/"
-          element={
-            <ProtectedRoute>
-              <Comments />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="app/estadisticas/"
-          element={
-            <ProtectedRoute>
-              <Statistics />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="app/sugerencias/"
+            element={
+              <ProtectedRoute>
+                <Comments />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="app/estadisticas/"
+            element={
+              <ProtectedRoute>
+                <Statistics />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="admin/inicio/"
-          element={
-            <ProtectedRoute>
-              <AdminMap />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="admin/inicio/"
+            element={
+              <ProtectedRoute>
+                <AdminMap />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="admin/estadisticas/"
-          element={
-            <ProtectedRoute>
-              <AdminStatistics/>
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="admin/estadisticas/"
+            element={
+              <ProtectedRoute>
+                <AdminStatistics />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="admin/vehiculos/"
-          element={
-            <ProtectedRoute>
-              <AdminVehicles/>
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="admin/vehiculos/"
+            element={
+              <ProtectedRoute>
+                <AdminVehicles />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="admin/vehiculos/agregar-vehiculo/"
-          element={
-            <ProtectedRoute>
-              <AdminAddVehicle/>
-            </ProtectedRoute>
-          }
-        />
-        
-        <Route
-          path="admin/cargar-datos/"
-          element={
-            <ProtectedRoute>
-              <AdminData/>
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="admin/vehiculos/agregar-vehiculo/"
+            element={
+              <ProtectedRoute>
+                <AdminAddVehicle />
+              </ProtectedRoute>
+            }
+          />
 
-      </Routes>
+          <Route
+            path="admin/cargar-datos/"
+            element={
+              <ProtectedRoute>
+                <AdminData />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </VehicleContextProvider>
     </AuthContextProvider>
   );
 }
