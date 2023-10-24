@@ -1,5 +1,6 @@
 import BatteryConsumption from "components/grafics/battery/batteryConsumption";
 import BatteryVoltage from "components/grafics/battery/batteryVoltage";
+import BatteryPowerElectric from "components/grafics/battery/batteryPowerElectric";
 import NavBarApp from 'components/NavBarApp';
 
 const Statistics = () => {
@@ -14,6 +15,9 @@ const Statistics = () => {
           </div>
           <div style={{ flex: 1 }}>
             <BatteryVoltage />
+          </div>
+          <div style={{ flex: 1 }}>
+            <BatteryPowerElectric />
           </div>
         </div>
     </>

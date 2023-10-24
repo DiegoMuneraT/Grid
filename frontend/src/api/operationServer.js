@@ -10,22 +10,46 @@ export const createOperation = async (newOperation) => {
     return await operationApi.post("/", newOperation)
 }
 
-//obtener Voltaje
+//Elegir un auto en especifico
+const filterDataByVehicleId = (allData, vehicleId) => {
+    return allData.filter(entry => entry.vehicle_id === vehicleId);
+  };
+
+// Obtener datos de Voltaje
 export const getVoltageDataForVehicle = async (vehicleId) => {
-  try {
-    const response = await operationApi.get('/'); 
-    const allData = response.data;
-
-    // Filtrar los datos para obtener solo aquellos con el vehicle_id específico
-    const filteredData = allData.filter(entry => entry.vehicle_id === vehicleId);
-
-    const voltageData = filteredData.map(entry => ({
-      timestamp: entry.timestamp,
-      voltage: entry.voltage
-    }));
-
-    return voltageData;
-  } catch (error) {
-    throw error;
-  }
-};
+    try {
+      const response = await operationApi.get('/');
+      const allData = response.data;
+  
+      const filteredData = filterDataByVehicleId(allData, vehicleId);
+  
+      const voltageData = filteredData.map(entry => ({
+        timestamp: entry.timestamp,
+        voltage: entry.voltage
+      }));
+  
+      return voltageData;
+    } catch (error) {
+      throw error;
+    }
+  };
+  
+  // Obtener datos de potencia eléctrica
+  export const getPowerDataForVehicle = async (vehicleId) => {
+    try {
+      const response = await operationApi.get('/');
+      const allData = response.data;
+  
+      const filteredData = filterDataByVehicleId(allData, vehicleId);
+  
+      const powerElectricData = filteredData.map(entry => ({
+        timestamp: entry.timestamp,
+        power_kw: entry.power_kw
+      }));
+  
+      return powerElectricData;
+    } catch (error) {
+      throw error;
+    }
+  };
+  
