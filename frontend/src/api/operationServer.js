@@ -34,25 +34,62 @@ export const getVoltageDataForVehicle = async (vehicleId) => {
     }
   };
   
-// Obtener datos de potencia eléctrica
-export const getPowerDataForVehicle = async (vehicleId) => {
+  // Obtener datos de potencia eléctrica
+  export const getPowerDataForVehicle = async (vehicleId) => {
+    try {
+      const response = await operationApi.get('/');
+      const allData = response.data;
+  
+      const filteredData = filterDataByVehicleId(allData, vehicleId);
+  
+      const powerElectricData = filteredData.map(entry => ({
+        timestamp: entry.timestamp,
+        power_kw: entry.power_kw
+      }));
+  
+      return powerElectricData;
+    } catch (error) {
+      throw error;
+    }
+  };
+ // Obtener datos de consumo
+export const getConsumptionDataForVehicle = async (vehicleId) => {
   try {
     const response = await operationApi.get('/');
     const allData = response.data;
 
     const filteredData = filterDataByVehicleId(allData, vehicleId);
 
-    const powerElectricData = filteredData.map(entry => ({
+    const consumptionData = filteredData.map(entry => ({
       timestamp: entry.timestamp,
-      power_kw: entry.power_kw
+      consumption: entry.consumption
     }));
 
-    return powerElectricData;
+    return consumptionData;
   } catch (error) {
     throw error;
   }
 };
+ 
+// Obtener datos de tiempo de conducción
+export const getDrivetimeDataForVehicle = async (vehicleId) => {
+  try {
+    const response = await operationApi.get('/');
+    const allData = response.data;
 
+    const filteredData = filterDataByVehicleId(allData, vehicleId);
+
+    const drivetimeData = filteredData.map(entry => ({
+      timestamp: entry.timestamp,
+      drivetime: entry.drivetime
+    }));
+
+    return drivetimeData;
+  } catch (error) {
+    throw error;
+  }
+};
+  
 // Obtener datos de temperatura
 export const getTemperatureForVehicle = async (vehicleId) => {
   try {
