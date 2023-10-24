@@ -1,5 +1,5 @@
 import NavBarAdmin from "components/NavBarAdmin";
-import BatteryConsumption from "components/grafics/battery/batteryConsumption";
+import BatteryConsumption from "components/grafics/battery/Consumption";
 import BatteryVoltage from "components/grafics/battery/batteryVoltage";
 
 const Statistics = () => {

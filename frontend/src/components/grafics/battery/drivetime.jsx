@@ -55,15 +55,22 @@ const Drivetime = () => {
     },
   };
 
+  const currentDrivetimeInMinutes = currentDrivetime / 60
+
   return (
     <div>
       <section className="clean-block clean-blog-list dark" style={{ height: '100vh', overflowY: 'hidden' }}>
         <div className="container">
-          <div className="block-content" style={{ margin: '80px 0 0 80px', width: '100%' }}>
+          <div className="block-content" style={{ margin: '80px 0 0 80px', width: '650px', height: '600px' }}>
             <h2 style={{ textAlign: 'center' }}>Tiempo de Manejo Histórico</h2>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <div style={{ width: '100%', height: '600px', position: 'relative' }}>
+              <div style={{ width: '80%', height: '300px', position: 'relative', top: '10%', left: '0%' }}>
                 <Line data={data} options={options} />
+              </div>
+              <div style={{ width: '50%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgray', padding: '60px' }}>
+                <div style={{ textAlign: 'center' }}>
+                  <h6 style={{ margin: '0', padding: '0' }}>{currentDrivetimeInMinutes.toFixed(2)} Tiempo de Manejo actual (Min)</h6>
+                </div>
               </div>
             </div>
           </div>

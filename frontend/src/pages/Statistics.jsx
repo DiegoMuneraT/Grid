@@ -1,6 +1,7 @@
-import BatteryConsumption from "components/grafics/battery/batteryConsumption";
+import Consumption from "components/grafics/battery/Consumption";
 import BatteryVoltage from "components/grafics/battery/batteryVoltage";
 import BatteryPowerElectric from "components/grafics/battery/batteryPowerElectric";
+import DriveTime from "components/grafics/battery/DriveTime";
 import NavBarApp from 'components/NavBarApp';
 
 const Statistics = () => {
@@ -11,13 +12,16 @@ const Statistics = () => {
 
         <div style={{ display: "grid", justifyContent: "space-between",gridTemplateColumns: "repeat(2, 1fr)"}}>
           <div style={{ flex: 1 }}>
-            <BatteryConsumption />
+            <Consumption/>
           </div>
           <div style={{ flex: 1 }}>
             <BatteryVoltage />
           </div>
           <div style={{ flex: 1 }}>
             <BatteryPowerElectric />
+          </div>
+          <div style={{ flex: 1 }}>
+            <DriveTime />
           </div>
         </div>
     </>
