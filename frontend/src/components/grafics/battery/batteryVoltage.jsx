@@ -46,14 +46,18 @@ const BatteryVoltage = () => {
       },
     ],
   };
-
+  
   const yAxes = [{
     ticks: {
       min: 0,
       max: 60,
     },
+    scaleLabel: {
+      display: true,
+      labelString: 'Kilovatios (kw)', // Nombre del eje Y
+    },
   }];
-
+  
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -64,20 +68,26 @@ const BatteryVoltage = () => {
     },
     scales: {
       y: yAxes,
+      x: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Fecha y Hora de Registro', // Nombre del eje X
+        },
+      }],
     },
   };
-
+  
   return (
     <div>
-      <section className="clean-block clean-blog-list dark" style={{ height: '100vh', overflowY: 'hidden' }}>
+      <section className="clean-block clean-blog-list dark" style={{margin:"8px", height: '100vh', overflowY: 'hidden', padding: "10px 10px 10px 10px" }}>
         <div className="container">
-          <div className="block-content" style={{ margin: '80px 0 0 80px', width: '650px', height: '600px' }}>
+          <div className="block-content" style={{ width: '500px', height: '400px', padding:"40px 20px 0px 20px" }}>
             <h2 style={{ textAlign: 'center' }}>Voltaje Histórico</h2>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <div style={{ width: '80%', height: '300px', position: 'relative', top: '10%', left: '0%' }}>
+              <div style={{ width: '100%', height: '300px', position: 'relative', top: '10%', left: '0%' }}>
                 <Line data={data} options={options} />
               </div>
-              <div style={{ width: '20%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgreen', padding: '10px' }}>
+              <div style={{ width: '30%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgreen', padding: '10px' }}>
                 <div style={{ textAlign: 'center' }}>
                   <h5 style={{ margin: '0', padding: '0' }}>{currentVoltage}(V) Voltaje actual</h5>
                 </div>
@@ -87,7 +97,7 @@ const BatteryVoltage = () => {
         </div>
       </section>
     </div>
-  );
+  );  
 };
 
 export default BatteryVoltage;

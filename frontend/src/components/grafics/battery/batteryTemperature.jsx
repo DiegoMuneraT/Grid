@@ -69,17 +69,17 @@ const BatteryTemperature = () => {
 
   return (
     <div>
-      <section className="clean-block clean-blog-list dark" style={{ height: '100vh', overflowY: 'hidden' }}>
+      <section className="clean-block clean-blog-list dark" style={{margin:"8px", height: '450px', overflowY: 'hidden', padding: "10px 10px 10px 10px" }}>
         <div className="container">
-          <div className="block-content" style={{ margin: '80px 0 0 80px', width: '650px', height: '600px' }}>
+          <div className="block-content" style={{width: '500px', height: '400px', padding:"40px 20px 0px 20px" }}>
             <h2 style={{ textAlign: 'center' }}>Temperatura Histórica</h2>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <div style={{ width: '80%', height: '300px', position: 'relative', top: '10%', left: '0%' }}>
+              <div style={{ width: '100%', height: '300px', position: 'relative', top: '10%', left: '0%' }}>
                 <Line data={data} options={options} />
               </div>
               <div style={{ width: '20%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgreen', padding: '10px' }}>
                 <div style={{ textAlign: 'center' }}>
-                  <h5 style={{ margin: '0', padding: '0' }}>{currentTemperature}(°C) Temperatura</h5>
+                  <h6 style={{fontSize: "12px", margin: '0', padding: '0' }}>{currentTemperature}(°C) Temperatura</h6>
                 </div>
               </div>
             </div>
