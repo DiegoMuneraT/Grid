@@ -18,7 +18,6 @@ const VehicleInfo = (data) => {
       return (
         <p
           style={{
-            color: "var(--bs-body-bg)",
             marginBottom: "0px",
             opacity: "1",
           }}
@@ -32,7 +31,6 @@ const VehicleInfo = (data) => {
       return (
         <p
           style={{
-            color: "var(--bs-body-bg)",
             marginBottom: "0px",
             opacity: "1",
           }}

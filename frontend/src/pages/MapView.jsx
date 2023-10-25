@@ -17,7 +17,7 @@ const MapView = () => {
           opacity: "1",
           padding: "15px",
           background: "var(--bs-body-color)",
-          color: "var(--bs-emphasis-color)",
+          color: "white",
           zIndex: '2',
         }}
       >
