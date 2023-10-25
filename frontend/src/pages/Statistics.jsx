@@ -1,7 +1,7 @@
 import Consumption from "components/grafics/battery/Consumption";
 import BatteryVoltage from "components/grafics/battery/batteryVoltage";
 import BatteryPowerElectric from "components/grafics/battery/batteryPowerElectric";
-import DriveTime from "components/grafics/battery/DriveTime";
+import DriveTime from "components/grafics/battery/drivetime";
 import NavBarApp from 'components/NavBarApp';
 
 const Statistics = () => {

@@ -31,22 +31,31 @@ export function VehicleContextProvider({ children }) {
     // Tomar el id del usuario
     const userid = getUser();
 
-    // Cargar el vehículo del usuario
+    // Cargar los vehículos del usuario
     useEffect(() => {
         if (userid !== undefined) {
-            listVehicles(currentVehicleId);
+            listVehicles();
         } else {
             setLoading(false);
         }
     }, [userid]);
+
+    // Funcion para setear el estado
+    function setCurrentVehicleState(id) {
+        setCurrentVehicleId(id);
+        getSingleVehicle(currentVehicleId);
+    }
 
     // Función para listar los vehículos del usuario
     const listVehicles = async () => {
         try {
             const ans = await vehicleServer.listVehicles(userid);
             const data = ans.data;
-            setCurrentVehicle(data[0]);
             setLoading(false);
+            return data;
+            // En la siguiente linea setea el primer vehículo de la lista
+            // Se puede cambiar para que sea el último o el que se quiera
+            //setCurrentVehicle(data[0]);
         } catch (error) {
             console.log(error);
             setLoading(false);
@@ -54,15 +63,14 @@ export function VehicleContextProvider({ children }) {
     }
 
     // Función para obtener un vehículo según su id
-    const getVehicle = async (vehicleId) => {
+    const getSingleVehicle = async () => {
         try {
-            const ans = await vehicleServer.getVehicle(vehicleId);
+            const ans = await vehicleServer.getVehicle(currentVehicleId);
             const data = ans.data;
-            console.log(data)
             setCurrentVehicle(data);
             setLoading(false);
         } catch (error) {
-            console.log(error);
+            //console.log(error);
             setLoading(false);
         }
     }
@@ -72,7 +80,7 @@ export function VehicleContextProvider({ children }) {
     }
 
     return(
-        <VehicleContext.Provider value={{ currentVehicle, setCurrentVehicle, setCurrentVehicleId }}>
+        <VehicleContext.Provider value={{ currentVehicle, setCurrentVehicle, setCurrentVehicleState }}>
             {children}
         </VehicleContext.Provider>
     );

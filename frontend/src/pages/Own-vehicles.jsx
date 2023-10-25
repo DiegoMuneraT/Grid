@@ -13,22 +13,25 @@ import { UserAuth } from "context/AuthContext";
 import { UserVehicle } from "context/CarContext";
 
 const getUsuario = () => {
-
   //Obtener el usuario autenticado
   const { user } = UserAuth();
 
-  //Obtener el id del usuario 
+  //Obtener el id del usuario
   const userid = user.uid;
 
-  return (userid)
-
-}
-
-// Setea el id del vehiculo seleccionado (SIN TERMINAR)
-const updateCurrentVehicle = (vehicleId) => {
-  const { setCurrentVehicleId } = UserVehicle();
-  setCurrentVehicleId(vehicleId);
+  return userid;
 };
+
+// Actualizar el vehiculo actual segun el id
+const updateCurrentVehicle = (vehicleId) => {
+  const { setCurrentVehicleState } = UserVehicle();
+  try {
+    setCurrentVehicleState(vehicleId);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
 const Table = ({ modelo, marca, placa, id}) => {
 
@@ -92,7 +95,7 @@ const OwnVehicles = () => {
   const listVehicles = async () => {
     try {
       const ans = await vehicleServer.listVehicles(userid);
-      const data = await ans.data
+      const data = ans.data
 
       setVehicles(data)
 
