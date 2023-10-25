@@ -84,7 +84,7 @@ function Consumption() {
               <div style={{ width: '20%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgray', padding: '10px' }}>
                 <div style={{ textAlign: 'center' }}>
                   <h6 style={{ margin: '0', padding: '0' }}>
-                    {loading ? 'Cargando...' : `${totalConsumptionRef.current.toFixed(2)} Promedio de consumo (Wh)`}</h6>
+                    {loading ? 'Cargando...' : `${totalConsumptionRef.current.toFixed(2)} (Wh) Promedio de consumo`}</h6>
                 </div>
               </div>
             </div>

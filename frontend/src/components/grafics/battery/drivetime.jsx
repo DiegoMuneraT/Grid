@@ -69,7 +69,7 @@ const Drivetime = () => {
               </div>
               <div style={{ width: '50%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgray', padding: '60px' }}>
                 <div style={{ textAlign: 'center' }}>
-                  <h6 style={{ margin: '0', padding: '0' }}>{currentDrivetimeInMinutes.toFixed(2)} Tiempo de Manejo actual (Min)</h6>
+                  <h6 style={{ margin: '0', padding: '0' }}>{currentDrivetimeInMinutes.toFixed(2)}(Min) Tiempo de Manejo actual</h6>
                 </div>
               </div>
             </div>
