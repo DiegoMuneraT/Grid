@@ -5,6 +5,7 @@ import DriveTime from "components/grafics/battery/drivetime";
 import BatteryTemperature from "components/grafics/battery/batteryTemperature"
 import NavBarApp from 'components/NavBarApp';
 import VehicleInfo from "components/VehicleInfo";
+import BatteryState from "components/grafics/battery/BatteryState";
 
 const Statistics = () => {
   return (
@@ -48,6 +49,11 @@ const Statistics = () => {
                   </div>
                   <div style={{ height: "450px", margin: "0px 0 0 0px"}}>
                     <BatteryTemperature />
+                  </div>
+                </div>
+                <div style={{display: "flex"}}>
+                <div style={{ height: "450px", margin: "0px 0 0 0px"}}>
+                    <BatteryState />
                   </div>
                 </div>
           </div>
