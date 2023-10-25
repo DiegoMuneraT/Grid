@@ -79,7 +79,7 @@ const BatteryTemperature = () => {
               </div>
               <div style={{ width: '20%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgreen', padding: '10px' }}>
                 <div style={{ textAlign: 'center' }}>
-                  <h5 style={{ margin: '0', padding: '0' }}>{currentTemperature} Temperatura (°C)</h5>
+                  <h5 style={{ margin: '0', padding: '0' }}>{currentTemperature}(°C) Temperatura</h5>
                 </div>
               </div>
             </div>

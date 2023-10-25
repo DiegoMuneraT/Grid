@@ -67,7 +67,7 @@ const PowerElectric = () => {
               </div>
               <div style={{ width: '20%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgray', padding: '10px' }}>
                 <div style={{ textAlign: 'center' }}>
-                  <h6 style={{ margin: '0', padding: '0' }}>{currentPower} Potencia actual (Kw)</h6>
+                  <h6 style={{ margin: '0', padding: '0' }}>{currentPower}(Kw) Potencia actual</h6>
                 </div>
               </div>
             </div>
