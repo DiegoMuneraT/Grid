@@ -4,6 +4,7 @@ import BatteryPowerElectric from "components/grafics/battery/batteryPowerElectri
 import DriveTime from "components/grafics/battery/drivetime";
 import BatteryTemperature from "components/grafics/battery/batteryTemperature"
 import NavBarApp from 'components/NavBarApp';
+import VehicleInfo from "components/VehicleInfo";
 
 const Statistics = () => {
   return (
@@ -13,6 +14,23 @@ const Statistics = () => {
         <div className="container">
           <div className="block-content table100" style={{ margin: '20px 0 0 20px', }}>
             <h1 style={{ textAlign: "center" }}>Estadísticas</h1>
+            <div style={{
+              margin: "20px",
+              position: "relative",
+              right: "0",
+              width: "15rem",
+              height: "5rem",
+              backdropFilter: "opacity(1) blur(0px)",
+              opacity: "1",
+              padding: "15px",
+              background: "white",
+              color: "black",
+              zIndex: '2',
+            }}>
+              <VehicleInfo data="vehiculo"/>
+              <VehicleInfo data="placa"/>
+            </div>
+
                 <div style={{ height: "500px", margin: "10px 0 0 10px"}}>
                   <Consumption/>
                 </div>
