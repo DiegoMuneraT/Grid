@@ -15,7 +15,7 @@ const filterDataByVehicleId = (allData, vehicleId) => {
     return allData.filter(entry => entry.vehicle_id === vehicleId);
   };
 
-// Obtener datos de Voltaje
+//Obtener datos de Voltaje
 export const getVoltageDataForVehicle = async (vehicleId) => {
     try {
       const response = await operationApi.get('/');
@@ -104,6 +104,25 @@ export const getTemperatureForVehicle = async (vehicleId) => {
     }));
 
     return temperatureData;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// Obtener datos del Eatdo de Carga
+export const getStateOfChargeForVehicle = async (vehicleId) => {
+  try {
+    const response = await operationApi.get('/');
+    const allData = response.data;
+
+    const filteredData = filterDataByVehicleId(allData, vehicleId);
+
+    const ChargeData = filteredData.map(entry => ({
+      timestamp: entry.timestamp,
+      soc: entry.soc
+    }));
+
+    return ChargeData;
   } catch (error) {
     throw error;
   }

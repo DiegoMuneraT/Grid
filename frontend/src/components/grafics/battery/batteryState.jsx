@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
-import { getVoltageDataForVehicle, getPowerDataForVehicle } from "api/operationServer";
+import { getStateOfChargeForVehicle } from "api/operationServer";
 
 const BatteryState = () => {
   const [chargeData, setChargeData] = useState([]);
@@ -11,20 +11,15 @@ const BatteryState = () => {
 
     const fetchChargeData = async () => {
       try {
-        const voltageData = await getVoltageDataForVehicle(vehicleId);
-        const powerData = await getPowerDataForVehicle(vehicleId);
+        const data = await getStateOfChargeForVehicle(vehicleId);
 
-        if (voltageData && voltageData.length > 0 && powerData && powerData.length > 0) {
-          // Suponiendo que la carga actual se puede calcular utilizando la fórmula I = P/V
-          const lastVoltageReading = voltageData[voltageData.length - 1].voltage;
-          const lastPowerReading = powerData[powerData.length - 1].power_kw;
-          const calculatedCharge = lastPowerReading / lastVoltageReading;
+        if (data && data.length > 0) {
+          const lastChargeReading = data[data.length - 1].soc;
+          setCurrentCharge(lastChargeReading);
 
-          setCurrentCharge(calculatedCharge);
-
-          const historicalData = voltageData.map((entry, index) => ({
+          const historicalData = data.map(entry => ({
             x: entry.timestamp,
-            y: powerData[index]?.power_kw / entry.voltage  // Asegurarse de que powerData y voltageData tengan la misma longitud
+            y: entry.soc
           }));
 
           setChargeData(historicalData);

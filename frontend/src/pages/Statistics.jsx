@@ -5,7 +5,7 @@ import DriveTime from "components/grafics/battery/drivetime";
 import BatteryTemperature from "components/grafics/battery/batteryTemperature"
 import NavBarApp from 'components/NavBarApp';
 import VehicleInfo from "components/VehicleInfo";
-import BatteryState from "components/grafics/battery/BatteryState";
+import BatteryState from "components/grafics/battery/batteryState";
 
 const Statistics = () => {
   return (
