@@ -71,10 +71,13 @@ const BatteryTemperature = () => {
     <div>
       <section className="clean-block clean-blog-list dark" style={{margin:"8px", height: '450px', overflowY: 'hidden', padding: "10px 10px 10px 10px" }}>
         <div className="container">
-          <div className="block-content" style={{width: '500px', height: '400px', padding:"40px 20px 0px 20px" }}>
+          <div className="block-content" style={{width: '500px', height: '480px', padding:"40px 20px 0px 20px" }}>
             <h2 style={{ textAlign: 'center' }}>Temperatura Histórica</h2>
+            <p style={{ textAlign: 'center' }}>
+              Esta gráfica muestra la evolución histórica de la temperatura de la batería del vehículo eléctrico en grados Celsius (°C). 
+            </p>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <div style={{ width: '100%', height: '300px', position: 'relative', top: '10%', left: '0%' }}>
+              <div style={{ width: '100%', height: '260px', position: 'relative', top: '10%', left: '0%' }}>
                 <Line data={data} options={options} />
               </div>
               <div style={{ width: '20%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgreen', padding: '10px' }}>
