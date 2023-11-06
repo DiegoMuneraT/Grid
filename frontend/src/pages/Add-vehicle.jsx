@@ -66,14 +66,35 @@ export default function AddVehicle() {
                   <label className="form-label">
                     Marca <b>*</b> 
                   </label>
-                  <input
-                    className="form-control item"
+                  <select
+                    className="form-select"
                     name="marca"
                     value={data.marca}
                     required
                     onChange={handleInputChange}
                     data-bs-theme="light"
-                  />
+                  >
+                    <option selected>Seleccionar una marca</option>
+                    <option value="Renault">Renault</option>
+                    <option value="BYD">BYD</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Oransh">Oransh</option>
+                    <option value="Stark">Stark</option>
+                    <option value="Mitsubishi">Mitsubishi</option>
+                    <option value="Sunwin">Sunwin</option>
+                    <option value="JAC">JAC</option>
+                    <option value="Dongfen">Dongfen</option>
+                    <option value="Changan">Changan</option>
+                    <option value="Zhidou">Zhidou</option>
+                    <option value="Tesla">Tesla</option>
+                    <option value="Volkswagen">Volkswagen</option>
+                    <option value="BAIC">BAIC</option>
+                    <option value="Hyundai">Hyundai</option>
+                    <option value="Kia">Kia</option>
+                    <option value="Chery">Chery</option>
+                  </select>
+                  
                 </div>
                 <div className="mb-3">
                   <label className="form-label">
