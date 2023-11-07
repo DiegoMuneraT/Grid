@@ -1,7 +1,8 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../services/firebase/firebase_config";
+import { auth, firestore } from "../../services/firebase/firebase_config";
+import { doc, setDoc } from "firebase/firestore";
 
-const AuthSignin = (event) => {
+const AuthSignin = async (event) => {
     // Previene que el formulario se envíe
     event.preventDefault();
     // Obtener los datos del formulario
@@ -12,14 +13,19 @@ const AuthSignin = (event) => {
         password: data.get("password"),
     }
     // Crear el usuario
-    createUserWithEmailAndPassword(auth, formUser.email, formUser.password)
-        .then(() => {
+    const infoUser = await createUserWithEmailAndPassword(auth, formUser.email, formUser.password)
+        .then((usuarioFirebase) => {
             // Limpiar el formulario
             event.target.reset();
+            return usuarioFirebase;
     })
     .catch((error) => {
         console.log(`Error: ${error.code}, ${error.message}`);
     })
+
+    const docuRef = doc(firestore, `usuarios/${infoUser.user.uid}`);
+
+    setDoc(docuRef, {rol: "user"})
 
 }
 export default AuthSignin;
