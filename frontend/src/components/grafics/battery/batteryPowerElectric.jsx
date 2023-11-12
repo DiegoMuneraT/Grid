@@ -59,10 +59,13 @@ const PowerElectric = () => {
     <div>
       <section className="clean-block clean-blog-list dark" style={{margin:"10px", height: '450px', overflowY: 'hidden', padding: "10px 10px 10px 10px" }}>
         <div className="container">
-          <div className="block-content" style={{ width: '500px', height: '400px', padding:"40px 20px 0px 20px" }}>
+          <div className="block-content" style={{ width: '500px', height: '480px', padding:"40px 20px 0px 20px" }}>
             <h2 style={{ textAlign: 'center' }}>Potencia Eléctrica Histórica</h2>
+            <p style={{ textAlign: 'center' }}>
+              Esta gráfica representa la evolución de la potencia eléctrica en kilovatios (kW) del vehículo eléctrico a lo largo del tiempo. 
+            </p>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <div style={{ width: '100%', height: '300px', position: 'relative', top: '10%', left: '0%' }}>
+              <div style={{ width: '100%', height: '250px', position: 'relative', top: '10%', left: '0%' }}>
                 <Line data={data} options={options} />
               </div>
               <div style={{ width: '30%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgreen', padding: '10px' }}>
