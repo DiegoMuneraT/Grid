@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: dannymelguizo/gid
+        image: dannymelguizo/grid
         ports:
         - containerPort: 3000
