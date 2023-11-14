@@ -8,7 +8,7 @@ import { UserAuth } from "../context/AuthContext";
 import NavBarLogin from "../components/NavBarLogin";
 import Footer from "../components/Footer";
 import AuthLogin from "../components/loginForm/AuthLogin";
-import {doc, getDoc} from "firebase/firestore";
+import {doc, getDoc, setDoc} from "firebase/firestore";
 import {firestore} from "../services/firebase/firebase_config";
 
 const Login = () => {
@@ -32,13 +32,27 @@ const Login = () => {
       console.log(error);
     }
   };
+
+  const getRol = async (uid)  => {
+    const docRef = doc(firestore, `usuarios/${uid}`);
+    const datosCifrados = await getDoc(docRef);
+    try {
+      const datos = datosCifrados.data().rol;
+      return datos;
+    } catch (e) {
+      return null
+    }
+  }
+
   // Redireccionar al inicio si el usuario ya está autenticado
   useEffect(() => {
     if (user != null) {
-      //const docRef = doc(firestore, `usuarios/${user.uid}`)
-
-      //console.log(docRef)
-
+      getRol(user.uid).then((rol) => {
+        if (rol === null ){
+          const docuRef = doc(firestore, `usuarios/${user.uid}`);
+          setDoc(docuRef, {rol: "user"})
+        }
+      });
       navigate("/app/inicio/", { replace: true });
     }
   }, [user]);

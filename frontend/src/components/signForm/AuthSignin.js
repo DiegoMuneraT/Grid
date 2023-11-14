@@ -23,6 +23,7 @@ const AuthSignin = async (event) => {
         console.log(`Error: ${error.code}, ${error.message}`);
     })
 
+    //Se asigna rol al usuario
     const docuRef = doc(firestore, `usuarios/${infoUser.user.uid}`);
 
     setDoc(docuRef, {rol: "user"})

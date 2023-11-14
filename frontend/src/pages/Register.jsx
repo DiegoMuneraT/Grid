@@ -8,6 +8,8 @@ import NavBarLogin from "../components/NavBarLogin";
 import { UserAuth } from "../context/AuthContext";
 import AuthSignin from "../components/signForm/AuthSignin";
 import { Toast } from "toaster-js";
+import {doc, getDoc, setDoc} from "firebase/firestore";
+import {firestore} from "../services/firebase/firebase_config";
 
 const Register = () => {
   // Contexto de autenticación
@@ -32,11 +34,28 @@ const Register = () => {
       new Toast(`${error.message}, ${error.code}`, Toast.TYPE_ERROR, Toast.TIME_NORMAL);
     }
   };
+
+  const getRol = async (uid)  => {
+    const docRef = doc(firestore, `usuarios/${uid}`);
+    const datosCifrados = await getDoc(docRef);
+    try {
+      const datos = datosCifrados.data().rol;
+      return datos;
+    } catch (e) {
+      return null
+    }
+  }
+
   // Redireccionar al inicio si el usuario ya está autenticado
   useEffect(() => {
     if (user != null) {
-      console.log(user)
-      //navigate("/app/inicio/", { replace: true });
+      getRol(user.uid).then((rol) => {
+        if (rol === null ){
+          const docuRef = doc(firestore, `usuarios/${user.uid}`);
+          setDoc(docuRef, {rol: "user"})
+        }
+      });
+      navigate("/app/inicio/", { replace: true });
     }
   }, [user]);
 

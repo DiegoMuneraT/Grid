@@ -15,6 +15,11 @@ import {
 } from "firebase/auth";
 // Services
 import { auth } from "../services/firebase/firebase_config";
+import { firestore } from "../services/firebase/firebase_config";
+import { 
+    doc,
+    setDoc 
+} from "firebase/firestore";
 
 // Contexto de autenticación
 const AuthContext = createContext();
