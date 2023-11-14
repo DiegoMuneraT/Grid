@@ -4,14 +4,13 @@ import {firestore} from "../services/firebase/firebase_config";
 //@context
 import { UserAuth } from "../context/AuthContext";
 //@components
-import MapUser from "components/MapUser";
-import MapAdmin from "components/MapAdmin";
+import AddVehiclesAdmin from "components/AddVehiclesAdmin";
+import AddVehiclesUser from "components/AddVehiclesUser";
 //@react
 import { useState } from "react";
 
-
-const MapView = () => {
-
+const AddVehicleView = () => {
+  
   const { user } = UserAuth();
   const [rol, setRol] = useState(null);
 
@@ -29,8 +28,9 @@ const MapView = () => {
 
   return (
     <>
-      {rol === "user" ? <MapUser/> : <MapAdmin/>}
+      {rol === "user" ? <AddVehiclesUser/> : <AddVehiclesAdmin/>}
     </>
   );
-};
-export default MapView;
+}
+
+export default AddVehicleView;

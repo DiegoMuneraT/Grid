@@ -1,6 +1,5 @@
 // @react
 import { Routes, Route } from 'react-router-dom'
-
 //@components
 import Home from './pages/Home'
 import AboutUs from './pages/AboutUs'
@@ -8,20 +7,17 @@ import Contact from './pages/Contact'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import MapView from './pages/MapView'
-import OwnVehicles from './pages/Own-vehicles'
-import Comments from './pages/Comments'
-import Statistics from './pages/Statistics'
-import AdminMap from './pages/AdminMap'
-import AdminStatistics from './pages/AdminStatistics'
-import AdminVehicles from './pages/AdminVehicles'
-import AdminData from './pages/AdminData'
-import AdminAddVehicle from 'pages/AdminAdd-vehicle'
+import OwnVehiclesView from './pages/OwnVehiclesView'
+import CommentsView from './pages/CommentsView'
+import StatisticsView from './pages/StatisticsView'
+import UploadData from './pages/UploadData'
 import Error404 from './errors/Error404'
-import AddVehicle from './pages/Add-vehicle'
-import { AuthContextProvider } from './context/AuthContext'
+import AddVehicleView from './pages/AddVehicleView'
 import ProtectedRoute from './components/authListener/ProtectedRoute'
+//@context
 import { VehicleContextProvider } from 'context/CarContext'
-// Styled components
+import { AuthContextProvider } from './context/AuthContext'
+//@style components
 import './App.css'
 import 'bootstrap/dist/js/bootstrap.min.js';
 import './assets/css/baguetteBox.min.css';
@@ -53,7 +49,7 @@ function App() {
             path="app/mis-vehiculos/"
             element={
               <ProtectedRoute>
-                <OwnVehicles />
+                <OwnVehiclesView />
               </ProtectedRoute>
             }
           />
@@ -62,7 +58,7 @@ function App() {
             path="app/mis-vehiculos/agregar-vehiculo/"
             element={
               <ProtectedRoute>
-                <AddVehicle />
+                <AddVehicleView />
               </ProtectedRoute>
             }
           />
@@ -71,7 +67,7 @@ function App() {
             path="app/sugerencias/"
             element={
               <ProtectedRoute>
-                <Comments />
+                <CommentsView />
               </ProtectedRoute>
             }
           />
@@ -79,52 +75,16 @@ function App() {
             path="app/estadisticas/"
             element={
               <ProtectedRoute>
-                <Statistics />
+                <StatisticsView />
               </ProtectedRoute>
             }
           />
 
           <Route
-            path="admin/inicio/"
+            path="app/cargar-datos/"
             element={
               <ProtectedRoute>
-                <AdminMap />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="admin/estadisticas/"
-            element={
-              <ProtectedRoute>
-                <AdminStatistics />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="admin/vehiculos/"
-            element={
-              <ProtectedRoute>
-                <AdminVehicles />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="admin/vehiculos/agregar-vehiculo/"
-            element={
-              <ProtectedRoute>
-                <AdminAddVehicle />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="admin/cargar-datos/"
-            element={
-              <ProtectedRoute>
-                <AdminData />
+                <UploadData />
               </ProtectedRoute>
             }
           />

@@ -109,7 +109,7 @@ export const getTemperatureForVehicle = async (vehicleId) => {
   }
 };
 
-// Obtener datos del Eatdo de Carga
+// Obtener datos del Estado de Carga
 export const getStateOfChargeForVehicle = async (vehicleId) => {
   try {
     const response = await operationApi.get('/');

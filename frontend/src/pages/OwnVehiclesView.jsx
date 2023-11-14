@@ -1,16 +1,15 @@
+//@components
+import OwnVehiclesAdmin from 'components/OwnVehiclesAdmin';
+import OwnVehiclesUser from 'components/OwnVehiclesUser';
+//@context
+import { UserAuth } from "../context/AuthContext";
+//@react
+import { useState } from "react";
 //@services
 import {doc, getDoc} from "firebase/firestore";
 import {firestore} from "../services/firebase/firebase_config";
-//@context
-import { UserAuth } from "../context/AuthContext";
-//@components
-import MapUser from "components/MapUser";
-import MapAdmin from "components/MapAdmin";
-//@react
-import { useState } from "react";
 
-
-const MapView = () => {
+const OwnVehiclesView = () => {
 
   const { user } = UserAuth();
   const [rol, setRol] = useState(null);
@@ -29,8 +28,9 @@ const MapView = () => {
 
   return (
     <>
-      {rol === "user" ? <MapUser/> : <MapAdmin/>}
+      {rol === "user" ? <OwnVehiclesUser/> : <OwnVehiclesAdmin/>}
     </>
   );
-};
-export default MapView;
+}
+
+export default OwnVehiclesView;

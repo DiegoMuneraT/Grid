@@ -85,7 +85,7 @@ const Table = ({ modelo, marca, placa, id}) => {
   );
 }
 
-const OwnVehicles = () => {
+const OwnVehiclesUser = () => {
 
   const [vehicles, setVehicles] = useState({});
 
@@ -136,7 +136,7 @@ const OwnVehicles = () => {
 
 
   return (
-    <main className="page service-page" style={{ background: '#f9f9f9', width: '100%', height: '100%', overflowX: 'hidden', }}>
+    <>
       <NavBarApp />
       <section className="clean-block clean-blog-list dark" style={{ height: "100vh", overflowY: "hidden" }}>
         <div className="container">
@@ -177,8 +177,8 @@ const OwnVehicles = () => {
         </div>
       </section>
 
-    </main>
+    </>
   )
 }
 
-export default OwnVehicles;
+export default OwnVehiclesUser;

@@ -40,7 +40,7 @@ const NavBarAdmin = () => {
         <li className="nav-item">
           <NavLink
             className="nav-link py-3 border-bottom rounded-0"
-            to="/admin/inicio/"
+            to="/app/inicio/"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@ const NavBarAdmin = () => {
         <li className="nav-item">
           <NavLink
             className="nav-link py-3 border-bottom rounded-0"
-            to="/admin/estadisticas/"
+            to="/app/estadisticas/"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ const NavBarAdmin = () => {
         <li className="nav-item">
           <NavLink
             className="nav-link py-3 border-bottom rounded-0"
-            to="/admin/vehiculos/"
+            to="/app/mis-vehiculos/"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +92,7 @@ const NavBarAdmin = () => {
         <li className="nav-item">
           <NavLink
             className="nav-link py-3 border-bottom rounded-0"
-            to="/admin/cargar-datos/"
+            to="/app/cargar-datos/"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

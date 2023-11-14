@@ -1,16 +1,18 @@
+//@react
 import { NavLink } from "react-router-dom";
-import NavBarAdmin from "components/NavBarAdmin";
 import { useEffect, useState } from "react";
-import * as vehicleServer from "api/vehicleServer";
-import { UserAuth } from "context/AuthContext";
-
-//Estilos
+//@mui
 import IconButton from '@mui/material/IconButton';
 import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+//@components
+import NavBarAdmin from "components/NavBarAdmin";
+import * as vehicleServer from "api/vehicleServer";
+//@context
+import { UserAuth } from "context/AuthContext";
 
 
 const getUsuario = () => {
@@ -69,7 +71,7 @@ const Table = ({ modelo, marca, placa, activo, id}) => {
   )
 } 
 
-export default function OwnVehicles() {
+const OwnVehiclesAdmin = () => {
 
   const [vehicles, setVehicles] = useState({});
   const [filtro, setFiltro] = useState('');
@@ -138,7 +140,7 @@ export default function OwnVehicles() {
   };
 
   return (
-    <main className="page service-page" style={{ background: '#f9f9f9', width: '100%', height: '100%', overflowX: 'hidden', }}>
+    <>
       <NavBarAdmin />
 
       <section className="clean-block clean-blog-list dark" style={{ height: "100vh", overflowY: "hidden" }}>
@@ -178,7 +180,7 @@ export default function OwnVehicles() {
             </table>
 
             <div style={{margin: "40px 0 20px 0"}}>
-              <NavLink className="nav-link rounded-0" to='/admin/vehiculos/agregar-vehiculo/' style={{display: "contents"}}>
+              <NavLink className="nav-link rounded-0" to='/app/mis-vehiculos/agregar-vehiculo/' style={{display: "contents"}}>
                 <button
                   className="btn btn-primary"
                   style={{
@@ -196,8 +198,8 @@ export default function OwnVehicles() {
           </div>
         </div>
       </section>
-
-    </main>
+    </>
   )
 }
 
+export default OwnVehiclesAdmin;
