@@ -35,7 +35,8 @@ const Register = () => {
   // Redireccionar al inicio si el usuario ya está autenticado
   useEffect(() => {
     if (user != null) {
-      navigate("/app/inicio/", { replace: true });
+      console.log(user)
+      //navigate("/app/inicio/", { replace: true });
     }
   }, [user]);
 

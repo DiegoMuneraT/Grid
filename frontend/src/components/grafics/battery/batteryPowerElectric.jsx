@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import { getPowerDataForVehicle } from "api/operationServer"; 
 
-const PowerElectric = () => {
+const PowerElectric = ({dataVehicle}) => {
   const [powerData, setPowerData] = useState([]);
   const [currentPower, setCurrentPower] = useState(0);
 
   useEffect(() => {
-    const vehicleId = "FXR906"; // Reemplazar con el ID del vehículo seleccionado
+    const vehicleId = dataVehicle; // Reemplazar con el ID del vehículo seleccionado
 
     const fetchPowerData = async () => {
       try {

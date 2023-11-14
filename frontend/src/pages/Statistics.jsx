@@ -7,6 +7,7 @@ import BatteryTemperature from "components/grafics/battery/batteryTemperature";
 import NavBarApp from 'components/NavBarApp';
 import VehicleInfo from "components/VehicleInfo";
 import BatteryState from "components/grafics/battery/batteryState";
+import { UserVehicle } from '../context/CarContext'
 
 const Statistics = () => {
   const [timeInterval, setTimeInterval] = useState('hour'); // Inicializar con 'days'
@@ -14,6 +15,10 @@ const Statistics = () => {
   const handleTimeIntervalChange = (newTimeInterval) => {
     setTimeInterval(newTimeInterval);
   };
+
+  const { currentVehicle } = UserVehicle()
+
+  const vehicleId = currentVehicle.placa
 
   return (
     <>
@@ -81,27 +86,27 @@ const Statistics = () => {
             </div>
 
             <div style={{ height: "500px", margin: "10px 0 0 10px" }}>
-              <Consumption />
+              <Consumption dataVehicle={vehicleId}/>
             </div>
             <div style={{ display: "flex" }}>
               <div style={{ height: "450px", margin: "50px 0 0 0px" }}>
-                <DriveTime />
+                <DriveTime dataVehicle={vehicleId}/>
               </div>
               <div style={{ height: "450px", margin: "50px 0 0 0px" }}>
-                <BatteryVoltage />
+                <BatteryVoltage timeInterval={timeInterval} dataVehicle={vehicleId}/>
               </div>
             </div>
             <div style={{ display: "flex" }}>
               <div style={{ height: "450px", margin: "0px 0 0 0px" }}>
-                <BatteryPowerElectric />
+                <BatteryPowerElectric dataVehicle={vehicleId}/>
               </div>
               <div style={{ height: "450px", margin: "0px 0 0 0px" }}>
-                <BatteryTemperature />
+                <BatteryTemperature dataVehicle={vehicleId}/>
               </div>
             </div>
             <div style={{ display: "flex" }}>
               <div style={{ height: "450px", margin: "0px 0 0 0px" }}>
-                <BatteryState />
+                <BatteryState dataVehicle={vehicleId}/>
               </div>
             </div>
           </div>

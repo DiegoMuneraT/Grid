@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import { getVoltageDataForVehicle } from "api/operationServer";
 
-const BatteryVoltage = ({ timeInterval }) => {
+const BatteryVoltage = ({timeInterval, dataVehicle}) => {
   const [voltageData, setVoltageData] = useState([]);
   const [currentVoltage, setCurrentVoltage] = useState(0);
 
   useEffect(() => {
-    const vehicleId = "FXR906"; // Reemplazar con el ID del vehículo seleccionado
-
+    const vehicleId = dataVehicle; // Reemplazar con el ID del vehículo seleccionado
+    
     const fetchVoltageData = async () => {
       try {
         const response = await getVoltageDataForVehicle(vehicleId);

@@ -8,6 +8,8 @@ import { UserAuth } from "../context/AuthContext";
 import NavBarLogin from "../components/NavBarLogin";
 import Footer from "../components/Footer";
 import AuthLogin from "../components/loginForm/AuthLogin";
+import {doc, getDoc} from "firebase/firestore";
+import {firestore} from "../services/firebase/firebase_config";
 
 const Login = () => {
   // Contexto de autenticación
@@ -33,6 +35,10 @@ const Login = () => {
   // Redireccionar al inicio si el usuario ya está autenticado
   useEffect(() => {
     if (user != null) {
+      //const docRef = doc(firestore, `usuarios/${user.uid}`)
+
+      //console.log(docRef)
+
       navigate("/app/inicio/", { replace: true });
     }
   }, [user]);

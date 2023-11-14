@@ -22,12 +22,12 @@ function calculateHourlyAverage(consumptionData) {
   return hourlyAverages;
 }
 
-function Consumption() {
+function Consumption({dataVehicle}) {
   const [loading, setLoading] = useState(true);
   const totalConsumptionRef = useRef(0);
 
   useEffect(() => {
-    const vehicleId = 'FXR906';
+    const vehicleId = dataVehicle;
     getConsumptionDataForVehicle(vehicleId)
       .then(consumptionData => {
         const hourlyAverages = calculateHourlyAverage(consumptionData);

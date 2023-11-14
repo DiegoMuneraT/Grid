@@ -28,6 +28,8 @@ export const adminListVehiclesFiltro = async (usuario, activo) => {
 //Creacion de vehiculos
 export const createVehicle = async (newVehicle) => {
     const query = await vehicleApi.get("/")
+    
+    console.log(newVehicle)
 
     const data = query.data
 
@@ -36,6 +38,11 @@ export const createVehicle = async (newVehicle) => {
         if(data[i].placa === newVehicle.placa){
             if(data[i].activo === false){
                 data[i].activo = true
+                data[i].usuario = newVehicle.usuario
+                if (data[i].admin === ""){
+                    delete data[i].admin
+                }
+                
                 return await vehicleApi.put("/"+data[i].id+"/", data[i])
             } else {
                 return;

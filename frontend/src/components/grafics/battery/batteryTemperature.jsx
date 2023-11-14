@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import { getTemperatureForVehicle} from "api/operationServer"; 
 
-const BatteryTemperature = () => {
+const BatteryTemperature = ({dataVehicle}) => {
   const [temperatureData, setTemperatureData] = useState([]);
   const [currentTemperature, setCurrentTemperature] = useState(0); 
 
   useEffect(() => {
-    const vehicleId = "FXR906"; // Reemplazar con el ID del vehículo seleccionado
+    const vehicleId = dataVehicle; // Reemplazar con el ID del vehículo seleccionado
 
     const fetchVoltageData = async () => {
       try {
