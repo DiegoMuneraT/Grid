@@ -2,7 +2,7 @@ import axios from "axios";
 
 //Direccion de la API
 const vehicleApi = axios.create({
-    baseURL: 'https://grid-api-r3rjzt6gwa-uc.a.run.app/api/vehicle'//'http://34.31.210.135/api/vehicle'
+    baseURL: 'http://localhost:8000/api/vehicle' //'https://grid-api-r3rjzt6gwa-uc.a.run.app/api/vehicle'
 })
 
 //Obtencion de vehiculos
@@ -29,8 +29,6 @@ export const adminListVehiclesFiltro = async (usuario, activo) => {
 export const createVehicle = async (newVehicle) => {
     const query = await vehicleApi.get("/")
     
-    console.log(newVehicle)
-
     const data = query.data
 
     for(let i = 0; i < data.length; i++){

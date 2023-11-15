@@ -18,7 +18,7 @@ const Statistics = () => {
     const { currentVehicle } = UserVehicle()
 
     const vehicleId = currentVehicle.placa
-
+    
     return (
         <>
             <section className="clean-block clean-blog-list dark" style={{ height: "100%", overflowY: "hidden" }}>

@@ -9,6 +9,7 @@ import {
 import { UserAuth } from "./AuthContext";
 // @services
 import * as vehicleServer from "api/vehicleServer";
+import { async } from "q";
 
 const VehicleContext = createContext({});
 
@@ -25,7 +26,7 @@ const getUser = () => {
 
 export function VehicleContextProvider({ children }) {
     const [currentVehicle, setCurrentVehicle] = useState({});
-    const [loading, setLoading] = useState(true);
+    const [standar, setStandar] = useState(true);
     const [currentVehicleId, setCurrentVehicleId] = useState(null);
 
     // Tomar el id del usuario
@@ -36,7 +37,7 @@ export function VehicleContextProvider({ children }) {
         if (userid !== undefined) {
             listVehicles();
         } else {
-            setLoading(false);
+            setStandar(false);
         }
     }, [userid]);
 
@@ -51,14 +52,14 @@ export function VehicleContextProvider({ children }) {
         try {
             const ans = await vehicleServer.listVehicles(userid);
             const data = ans.data;
-            setLoading(false);
+            setStandar(false);
             return data;
             // En la siguiente linea setea el primer vehículo de la lista
             // Se puede cambiar para que sea el último o el que se quiera
             //setCurrentVehicle(data[0]);
         } catch (error) {
             console.log(error);
-            setLoading(false);
+            setStandar(false);
         }
     }
 
@@ -68,15 +69,23 @@ export function VehicleContextProvider({ children }) {
             const ans = await vehicleServer.getVehicle(currentVehicleId);
             const data = ans.data;
             setCurrentVehicle(data);
-            setLoading(false);
+            setStandar(false);
         } catch (error) {
             //console.log(error);
-            setLoading(false);
+            setStandar(false);
         }
     }
 
-    if (loading) {
-        console.log("Cargando...");
+    const standarVehicle = async () => {
+        const id = Math.round(Math.random() * (31-27) + 27 );
+        const ans = await vehicleServer.getVehicle(id);
+        const data = ans.data;
+        setCurrentVehicle(data);
+        setStandar(false);
+    }
+
+    if (standar) {
+        standarVehicle();
     }
 
     return(
