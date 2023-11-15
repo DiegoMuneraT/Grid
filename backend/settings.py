@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-rpgxw^16v2*o0p7y(pdq(4(ahtflo=1x)c!24)(l8c@t2iiqec
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["grid-api-r3rjzt6gwa-uc.a.run.app"]
 
 
 # Application definition

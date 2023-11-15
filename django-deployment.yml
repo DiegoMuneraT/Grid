@@ -16,5 +16,5 @@ spec:
       - name: backend
         image: dannymelguizo/grid-api
         ports:
-        - containerPort: 8000
+        - containerPort: 80
 

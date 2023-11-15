@@ -2,7 +2,7 @@ import axios from "axios";
 
 //Direccion de la API
 const vehicleApi = axios.create({
-    baseURL: 'http://localhost:8000/api/vehicle'//'http://34.31.210.135/api/vehicle'
+    baseURL: 'https://grid-api-r3rjzt6gwa-uc.a.run.app/api/vehicle'//'http://34.31.210.135/api/vehicle'
 })
 
 //Obtencion de vehiculos
