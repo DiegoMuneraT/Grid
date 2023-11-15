@@ -1,28 +1,81 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState} from 'react';
 import { Line } from 'react-chartjs-2';
 import { getVoltageDataForVehicle } from "api/operationServer";
 
-const BatteryVoltage = ({timeInterval, dataVehicle}) => {
+function calculateAveragedData(data, interval) {
+  const averagedData = [];
+  const groupedData = groupDataByInterval(data, interval);
+
+  groupedData.forEach((group) => {
+    const averageVoltage = calculateAverage(group);
+    averagedData.push({
+      timestamp: group[0].timestamp,
+      voltage: averageVoltage,
+    });
+  });
+
+  return averagedData;
+}
+
+function groupDataByInterval(data, interval) {
+  const groupedData = {};
+  const intervalKeyFn = getIntervalKeyFunction(interval);
+
+  data.forEach((entry) => {
+    const intervalKey = intervalKeyFn(entry.timestamp);
+    if (!groupedData[intervalKey]) {
+      groupedData[intervalKey] = [];
+    }
+    groupedData[intervalKey].push(entry);
+  });
+
+  return Object.values(groupedData);
+}
+
+function getIntervalKeyFunction(interval) {
+  if (interval === 'day') {
+    return (timestamp) => {
+      const date = new Date(timestamp);
+      return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    };
+  } else if (interval === 'hour') {
+    return (timestamp) => {
+      const date = new Date(timestamp);
+      return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}`;
+    };
+  } else if (interval === 'minute') {
+    return (timestamp) => {
+      const date = new Date(timestamp);
+      return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
+    };
+  }
+
+  return (timestamp) => timestamp;
+}
+
+function calculateAverage(data) {
+  const sum = data.reduce((acc, entry) => acc + entry.voltage, 0);
+  return sum / data.length;
+}
+
+function BatteryVoltage({ timeInterval, dataVehicle }) {
   const [voltageData, setVoltageData] = useState([]);
   const [currentVoltage, setCurrentVoltage] = useState(0);
 
   useEffect(() => {
-    const vehicleId = dataVehicle; // Reemplazar con el ID del vehículo seleccionado
-    
+    const vehicleId = dataVehicle;
+
     const fetchVoltageData = async () => {
       try {
         const response = await getVoltageDataForVehicle(vehicleId);
 
         if (response && response.length > 0) {
+          const averagedData = calculateAveragedData(response, timeInterval);
+
           const currentVoltage = response[response.length - 1].voltage;
           setCurrentVoltage(currentVoltage);
 
-          const historicalData = response.map(entry => ({
-            x: timestampToLabel(entry.timestamp, timeInterval),
-            y: entry.voltage,
-          }));
-
-          setVoltageData(historicalData);
+          setVoltageData(averagedData);
         }
       } catch (error) {
         console.error(error);
@@ -30,28 +83,26 @@ const BatteryVoltage = ({timeInterval, dataVehicle}) => {
     };
 
     fetchVoltageData();
-  }, [timeInterval]);
+  }, [dataVehicle, timeInterval]);
 
-  const timestampToLabel = (timestamp, interval) => {
-    const date = new Date(timestamp);
-
-    if (interval === 'day') {
-      return date.toLocaleDateString();
-    } else if (interval === 'hour') {
-      return date.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' });
-    } else if (interval === 'minute') {
-      return date.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const formattedLabels = voltageData.map((entry) => {
+    const timestamp = new Date(entry.timestamp);
+    if (timeInterval === 'day') {
+      return timestamp.toLocaleDateString();
+    } else if (timeInterval === 'hour') {
+      return timestamp.toLocaleString('en-US', { hour: 'numeric', hour12: true });
+    } else if (timeInterval === 'minute') {
+      return timestamp.toLocaleTimeString();
     }
-
-    return timestamp;
-  };
+    return entry.timestamp;
+  });
 
   const data = {
-    labels: voltageData.map(entry => entry.x),
+    labels: formattedLabels,
     datasets: [
       {
         label: 'Voltaje Histórico',
-        data: voltageData.map(entry => entry.y),
+        data: voltageData.map((entry) => entry.voltage),
         fill: false,
         borderColor: 'rgba(75, 192, 192, 0.6)',
         tension: 0.1,
@@ -59,16 +110,18 @@ const BatteryVoltage = ({timeInterval, dataVehicle}) => {
     ],
   };
 
-  const yAxes = [{
-    ticks: {
-      min: 0,
-      max: 60,
+  const yAxes = [
+    {
+      ticks: {
+        min: 0,
+        max: 60,
+      },
+      scaleLabel: {
+        display: true,
+        labelString: 'Voltios (v)', // Nombre del eje Y
+      },
     },
-    scaleLabel: {
-      display: true,
-      labelString: 'Kilovatios (kw)', // Nombre del eje Y
-    },
-  }];
+  ];
 
   const options = {
     responsive: true,
@@ -80,37 +133,38 @@ const BatteryVoltage = ({timeInterval, dataVehicle}) => {
     },
     scales: {
       y: yAxes,
-      x: [{
-        type: 'time', // Configura el tipo de escala como tiempo
-        time: {
-          unit: timeInterval, // Utiliza el valor de timeInterval como unidad de tiempo
+      x: [
+        {
+          type: 'time',
+          time: {
+            unit: timeInterval,
+            tooltipFormat: 'll HH:mm:ss', 
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Fecha y Hora de Registro',
+          },
         },
-        scaleLabel: {
-          display: true,
-          labelString: 'Fecha y Hora de Registro', // Obtén el nombre del eje X según el filtro seleccionado
-        },
-      }],
+      ],
     },
   };
 
   return (
     <div>
-      <section className="clean-block clean-blog-list dark" style={{ margin: "8px", height: '100vh', overflowY: 'hidden', padding: "10px 10px 10px 10px" }}>
+      <section className="clean-block clean-blog-list dark" style={{margin:"10px", height: '450px', overflowY: 'hidden', padding: "10px 10px 10px 10px" }}>
         <div className="container">
-          <div className="block-content" style={{ width: '500px', height: '480px', padding: "40px 20px 0px 20px" }}>
-            <h2 style={{ textAlign: 'center' }}>Voltaje Histórico</h2>
+          <div className="block-content" style={{ width: '500px', height: '480px', padding:"40px 20px 0px 20px" }}>
+            <h3 style={{ textAlign: 'center' }}>Voltaje Histórico</h3>
             <p style={{ textAlign: 'center' }}>
-              Esta gráfica muestra la evolución histórica del voltaje de la batería del vehículo eléctrico en voltios (V).
+              Esta gráfica muestra el voltaje promedio por {timeInterval === 'day' ? 'día' : timeInterval === 'hour' ? 'hora' : 'minuto'} del vehículo eléctrico a lo largo del tiempo.
             </p>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <div style={{ width: '100%', height: '275px', position: 'relative', top: '10%', left: '0%' }}>
+              <div style={{ width: '100%', height: '250px', position: 'relative', top: '10%', left: '0%' }}>
                 <Line data={data} options={options} />
               </div>
               <div style={{ width: '30%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgreen', padding: '10px' }}>
                 <div style={{ textAlign: 'center' }}>
-                  <h5 style={{ margin: '0', padding: '0' }}>
-                    {`${currentVoltage} (V) Voltaje actual`}
-                  </h5>
+                  <h6 style={{ margin: '0', padding: '0' }}>{currentVoltage}(V) Voltaje actual</h6>
                 </div>
               </div>
             </div>
@@ -119,6 +173,6 @@ const BatteryVoltage = ({timeInterval, dataVehicle}) => {
       </section>
     </div>
   );
-};
+}
 
 export default BatteryVoltage;

@@ -77,7 +77,7 @@ function Consumption({dataVehicle}) {
     <div>
     <section className="clean-block clean-blog-list dark" style={{ height: '100vh', overflowY: 'hidden', padding: "10px 10px 10px 10px"}}>
       <div className="container">
-        <div className="block-content" style={{ margin: '10px 0 0 0px', width: '1060px', height: '500px', padding: "40px" }}>
+        <div className="block-content" style={{ margin: '10px 0 0 0px', width: '1060px', height: '530px', padding: "40px" }}>
           <h3 style={{ textAlign: 'center' }}>Consumo Horario Histórico</h3>
           <p style={{ textAlign: 'center' }}>
             Esta gráfica muestra el consumo promedio por hora del vehículo eléctrico a lo largo del día. Cada barra representa la cantidad de energía consumida en vatios-hora (Wh) en una hora específica.

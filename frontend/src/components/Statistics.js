@@ -88,7 +88,7 @@ const Statistics = () => {
                         </div>
                         <div style={{ display: "flex" }}>
                             <div style={{ height: "450px", margin: "50px 0 0 0px" }}>
-                                <DriveTime dataVehicle={vehicleId} />
+                                <DriveTime timeInterval={timeInterval} dataVehicle={vehicleId} />
                             </div>
                             <div style={{ height: "450px", margin: "50px 0 0 0px" }}>
                                 <BatteryVoltage timeInterval={timeInterval} dataVehicle={vehicleId} />
@@ -96,15 +96,15 @@ const Statistics = () => {
                         </div>
                         <div style={{ display: "flex" }}>
                             <div style={{ height: "450px", margin: "0px 0 0 0px" }}>
-                                <BatteryPowerElectric dataVehicle={vehicleId} />
+                                <BatteryPowerElectric timeInterval={timeInterval} dataVehicle={vehicleId} />
                             </div>
                             <div style={{ height: "450px", margin: "0px 0 0 0px" }}>
-                                <BatteryTemperature dataVehicle={vehicleId} />
+                                <BatteryTemperature timeInterval={timeInterval} dataVehicle={vehicleId} />
                             </div>
                         </div>
                         <div style={{ display: "flex" }}>
                             <div style={{ height: "450px", margin: "0px 0 0 0px" }}>
-                                <BatteryState dataVehicle={vehicleId} />
+                                <BatteryState timeInterval={timeInterval} dataVehicle={vehicleId} />
                             </div>
                         </div>
                     </div>
