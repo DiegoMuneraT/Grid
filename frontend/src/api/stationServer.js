@@ -2,7 +2,7 @@ import axios from "axios";
 
 //Direccion de la API
 const stationApi = axios.create({
-    baseURL:'http://localhost:8000/api/station/'
+    baseURL:'http://34.31.210.135/api/station'
 })
 
 //Creacion de estaciones

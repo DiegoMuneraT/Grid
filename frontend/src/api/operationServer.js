@@ -2,7 +2,7 @@ import axios from "axios";
 
 //Direccion de la API
 const operationApi = axios.create({
-    baseURL:'http://localhost:8000/api/operation/'
+    baseURL:'http://34.31.210.135/api/operation'
 })
 
 //Creacion de datos
