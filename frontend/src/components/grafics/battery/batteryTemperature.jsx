@@ -153,8 +153,8 @@ const BatteryTemperature = ({ timeInterval, dataVehicle }) => {
     <div>
       <section className="clean-block clean-blog-list dark" style={{ margin: "10px", height: '450px', overflowY: 'hidden', padding: "10px 10px 10px 10px" }}>
         <div className="container">
-          <div className="block-content" style={{ width: '500px', height: '480px', padding: "40px 20px 0px 20px" }}>
-            <h2 style={{ textAlign: 'center' }}>Temperatura Histórica</h2>
+          <div className="block-content" style={{ width: '500px', height: '438px', padding: "40px 20px 0px 20px" }}>
+            <h3 style={{ textAlign: 'center' }}>Temperatura Histórica</h3>
             <p style={{ textAlign: 'center' }}>
               Esta gráfica muestra la temperatura promedio por {timeInterval === 'day' ? 'día' : timeInterval === 'hour' ? 'hora' : 'minuto'} de la batería del vehículo eléctrico a lo largo del tiempo.
             </p>
