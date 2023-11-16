@@ -2,63 +2,52 @@ import axios from "axios";
 
 //Direccion de la API
 const operationApi = axios.create({
-    baseURL:'http://localhost:8000/api/operation/'
+  baseURL: 'http://localhost:8000/api/operation' //'https://grid-api-r3rjzt6gwa-uc.a.run.app/api/operation'
 })
 
 //Creacion de datos
 export const createOperation = async (newOperation) => {
-    return await operationApi.post("/", newOperation)
+  return await operationApi.post("/", newOperation)
 }
-
-//Elegir un auto en especifico
-const filterDataByVehicleId = (allData, vehicleId) => {
-    return allData.filter(entry => entry.vehicle_id === vehicleId);
-  };
 
 //Obtener datos de Voltaje
 export const getVoltageDataForVehicle = async (vehicleId) => {
-    try {
-      const response = await operationApi.get('/');
-      const allData = response.data;
-  
-      const filteredData = filterDataByVehicleId(allData, vehicleId);
-  
-      const voltageData = filteredData.map(entry => ({
-        timestamp: entry.timestamp,
-        voltage: entry.voltage
-      }));
-  
-      return voltageData;
-    } catch (error) {
-      throw error;
-    }
-  };
-  
-  // Obtener datos de potencia eléctrica
-  export const getPowerDataForVehicle = async (vehicleId) => {
-    try {
-      const response = await operationApi.get('/');
-      const allData = response.data;
-  
-      const filteredData = filterDataByVehicleId(allData, vehicleId);
-  
-      const powerElectricData = filteredData.map(entry => ({
-        timestamp: entry.timestamp,
-        power_kw: entry.power_kw
-      }));
-  
-      return powerElectricData;
-    } catch (error) {
-      throw error;
-    }
-  };
- // Obtener datos de consumo
+  try {
+    const response = await operationApi.get('/?vehicle_id=' + vehicleId);
+    const filteredData = response.data;
+
+    const voltageData = filteredData.map(entry => ({
+      timestamp: entry.timestamp,
+      voltage: entry.voltage
+    }));
+
+    return voltageData;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// Obtener datos de potencia eléctrica
+export const getPowerDataForVehicle = async (vehicleId) => {
+  try {
+    const response = await operationApi.get('/?vehicle_id=' + vehicleId);
+    const filteredData = response.data;
+
+    const powerElectricData = filteredData.map(entry => ({
+      timestamp: entry.timestamp,
+      power_kw: entry.power_kw
+    }));
+
+    return powerElectricData;
+  } catch (error) {
+    throw error;
+  }
+};
+// Obtener datos de consumo
 export const getConsumptionDataForVehicle = async (vehicleId) => {
   try {
-    const response = await operationApi.get('/');
-    const allData = response.data;
-
-    const filteredData = filterDataByVehicleId(allData, vehicleId);
+    const response = await operationApi.get('/?vehicle_id=' + vehicleId);
+    const filteredData = response.data;
 
     const consumptionData = filteredData.map(entry => ({
       timestamp: entry.timestamp,
@@ -70,14 +59,12 @@ export const getConsumptionDataForVehicle = async (vehicleId) => {
     throw error;
   }
 };
- 
+
 // Obtener datos de tiempo de conducción
 export const getDrivetimeDataForVehicle = async (vehicleId) => {
   try {
-    const response = await operationApi.get('/');
-    const allData = response.data;
-
-    const filteredData = filterDataByVehicleId(allData, vehicleId);
+    const response = await operationApi.get('/?vehicle_id=' + vehicleId)
+    const filteredData = response.data;
 
     const drivetimeData = filteredData.map(entry => ({
       timestamp: entry.timestamp,
@@ -89,14 +76,12 @@ export const getDrivetimeDataForVehicle = async (vehicleId) => {
     throw error;
   }
 };
-  
+
 // Obtener datos de temperatura
 export const getTemperatureForVehicle = async (vehicleId) => {
   try {
-    const response = await operationApi.get('/');
-    const allData = response.data;
-
-    const filteredData = filterDataByVehicleId(allData, vehicleId);
+    const response = await operationApi.get('/?vehicle_id=' + vehicleId);
+    const filteredData = response.data;
 
     const temperatureData = filteredData.map(entry => ({
       timestamp: entry.timestamp,
@@ -112,10 +97,8 @@ export const getTemperatureForVehicle = async (vehicleId) => {
 // Obtener datos del Estado de Carga
 export const getStateOfChargeForVehicle = async (vehicleId) => {
   try {
-    const response = await operationApi.get('/');
-    const allData = response.data;
-
-    const filteredData = filterDataByVehicleId(allData, vehicleId);
+    const response = await operationApi.get('/?vehicle_id=' + vehicleId);
+    const filteredData = response.data;
 
     const ChargeData = filteredData.map(entry => ({
       timestamp: entry.timestamp,

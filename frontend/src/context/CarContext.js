@@ -9,6 +9,7 @@ import {
 import { UserAuth } from "./AuthContext";
 // @services
 import * as vehicleServer from "api/vehicleServer";
+import { async } from "q";
 
 const VehicleContext = createContext({});
 
@@ -76,7 +77,7 @@ export function VehicleContextProvider({ children }) {
     }
 
     if (loading) {
-        console.log("Cargando...");
+        console.log('Cargando vehículos...');
     }
 
     return(

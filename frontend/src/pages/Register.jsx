@@ -104,6 +104,7 @@ const Register = () => {
                   type="password"
                   id="password-1"
                   data-bs-theme="light"
+                  name="password1"
                   required
                 />
               </div>
