@@ -19,6 +19,7 @@ const AuthLogin = (event) => {
     })
     .catch((error) => {
         console.log(`Error: ${error.code}, ${error.message}`);
+        alert('Usuario o contraseña incorrectos')
     })
 
 }

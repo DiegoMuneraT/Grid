@@ -11,7 +11,15 @@ const AuthSignin = async (event) => {
     const formUser = {
         email: data.get("email"),
         password: data.get("password"),
+        password1: data.get("password1"),
     }
+
+    // Validar que las contraseñas sean iguales
+    if(formUser.password !== formUser.password1){
+        alert('Las contraseñas deben ser iguales')
+        return
+    }
+
     // Crear el usuario
     const infoUser = await createUserWithEmailAndPassword(auth, formUser.email, formUser.password)
         .then((usuarioFirebase) => {
@@ -21,12 +29,22 @@ const AuthSignin = async (event) => {
     })
     .catch((error) => {
         console.log(`Error: ${error.code}, ${error.message}`);
+        if (error.code === 'auth/weak-password'){
+            alert('La contraseña debe de tener al menos 6 caracteres.')
+        } else if (error.code === 'auth/email-already-in-use'){
+            alert('El correo ya se encuentra registrado.')
+        }
+        
     })
 
-    //Se asigna rol al usuario
-    const docuRef = doc(firestore, `usuarios/${infoUser.user.uid}`);
+    try{
+        //Se asigna rol al usuario
+        const docuRef = doc(firestore, `usuarios/${infoUser.user.uid}`);
 
-    setDoc(docuRef, {rol: "user"})
+        setDoc(docuRef, {rol: "user"})
+    } catch (error) {
+    }
+
 
 }
 export default AuthSignin;

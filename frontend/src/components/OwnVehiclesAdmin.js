@@ -27,6 +27,16 @@ const getUsuario = () => {
 
 }
 
+// Actualizar el vehiculo actual segun el id
+const updateCurrentVehicle = (vehicleId) => {
+  const { setCurrentVehicleState } = UserVehicle();
+  try {
+    setCurrentVehicleState(vehicleId);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
 const Table = ({ modelo, marca, placa, activo, id}) => {
   
@@ -57,7 +67,7 @@ const Table = ({ modelo, marca, placa, activo, id}) => {
     {show ? (
       <th>
         <IconButton aria-label="check" color="success">
-          <CheckCircleIcon/>
+          <CheckCircleIcon onClick={updateCurrentVehicle(id)} />
         </IconButton>
         <IconButton aria-label="cancel" onClick={() => {update(id)}} color="error">
           <CancelIcon/>
