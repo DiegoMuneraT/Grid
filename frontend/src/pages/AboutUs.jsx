@@ -1,78 +1,78 @@
-import NavBarHome from "../components/NavBarHome"
-import Footer from "../components/Footer"
+import React from 'react';
+import NavBarHome from '../components/NavBarHome';
+import Footer from '../components/Footer';
 
 export default function AboutUs() {
   return (
     <>
-        <NavBarHome/>
-        <main className="page service-page" style={{background: 'var(--bs-body-bg)', }}>
-            <section className="clean-block clean-services dark" style={{background: '#f9f9f9', padding: '0 0 100px'}}>           
-                <div className="container">
-                <div className="block-heading" style={{paddingTop: '35px'}}>
-                  <h2 className="text-info" style={{textAlign: 'center'}}>Acerca de nosotros</h2>
-                </div>
-                <header>
-                  <p></p>
-                  <h1>ManagEV, aprende a conocer más tu vehiculo</h1>
-                </header>
-                <div className="about-us-content">
-                  <div className="left-column">
-                    <img src="team-image.jpg" alt="Equipo" />
-                  </div>
-                  <div className="right-column">
-                    <p>
-                      Somos un equipo apasionado que se dedica a promover la movilidad sostenible a través de nuestra aplicación. Nuestra misión es...
-                    </p>
-                    <img src="/img/about_1.jpg" alt="Autos eléctricos" ></img>
-                    <ul>
-                      <li>Misión</li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="detailed-description">
+      <NavBarHome />
+      <main className="page service-page" style={{ background: 'var(--bs-body-bg)' }}>
+        <section className="clean-block clean-services dark" style={{ background: '#f9f9f9', padding: '0 0 100px' }}>
+          <div className="container about-container">
+            <div className="block-heading" style={{ paddingTop: '35px', textAlign: 'center' }}>
+              <h2 className="text-info">Acerca de nosotros</h2>
+            </div>
+
+            <div className="row about-us-content">
+              <div className="col-md-6 mb-4">
+                {}
+                <div className="history-container text-center">
                   <h2>Nuestra Historia</h2>
-                  <p>
-                    Aquí se puede contar la historia detallada del proyecto.
+                  <p className="text-center">
+                  ManagEv surge de la creciente inquietud de los usuarios respecto al consumo y duración de las baterías en vehículos eléctricos, una inversión fundamental. Nuestra herramienta aborda estas preocupaciones proporcionando un monitoreo integral de múltiples variables que impactan el rendimiento de la batería. Más allá de la observación, ManagEv capacita a los usuarios para comprender y mitigar los factores que podrían afectar la vida útil de sus baterías. 
+                  Además, ofrecemos una funcionalidad única: planificación de rutas óptimas según el nivel de batería actual.
+                    {}
                   </p>
+                  <p>¡Únete a la revolución ManagEv y lleva tu experiencia de conducción eléctrica al siguiente nivel!</p>
+                  <img className="img-fluid mx-auto d-block" src="/img/imagen.png" alt="Historia" />
                 </div>
-                <div className="team-section">
-                  <h2>Nuestro Equipo</h2>
-                  <div className="team-member">
-                    <img src="team-member1.jpg" alt="Miembro del equipo 1" />
-                    <h3>Brigith Lorena Giraldo Vargas</h3>
-                    <p>Scrum Master</p>
-                  </div>
-                  <div className="team-member">
-                    <img src="team-member2.jpg" alt="Miembro del equipo 2" />
-                    <h3>Daniel Melguizo Roldan</h3>
-                    <p>Developer</p>
-                  </div>
-                  <div className="team-member">
-                    <img src="team-member2.jpg" alt="Miembro del equipo 2" />
-                    <h3>Diego Alexander Munera Tobon</h3>
-                    <p>Developer</p>
-                  </div>
-                  <div className="team-member">
-                    <img src="team-member2.jpg" alt="Miembro del equipo 2" />
-                    <h3>Holmer Ortega Gomez</h3>
-                    <p>Tester</p>
-                  </div>
-                  <div className="team-member">
-                    <img src="team-member2.jpg" alt="Miembro del equipo 2" />
-                    <h3>Samuel Salazar Salazar</h3>
-                    <p>Tester/Arquitecto</p>
-                  </div>
-                  <div className="team-member">
-                    <img src="team-member2.jpg" alt="Miembro del equipo 2" />
-                    <h3>Valentina Ochoa Arboleda</h3>
-                    <p>Arquitecto</p>
-                  </div>
+              </div>
+
+              <div className="col-md-6 mb-4">
+                {}
+                <div className="mission-container text-center">
+                  <h2>Misión</h2>
+                  <p className="text-center">
+                  ManagEV dedicamos apasionadamente a impulsar la revolución de la movilidad sostenible mediante soluciones innovadoras y tecnológicas. Nuestra misión es liderar el cambio hacia un futuro más limpio y eficiente, transformando la experiencia de conducción de vehículos eléctricos y contribuyendo de manera significativa a la preservación del medio ambiente.
+                    {}
+                  </p>
+                  <img className="img-fluid mx-auto d-block" src="/img/imagen1.png" alt="Misión" />
                 </div>
-                </div>
-            </section>
-        </main>
-        <Footer/>
+              </div>
+            </div>
+
+            <div className="team-section">
+              <h2>Nuestro Equipo</h2>
+              <div className="row">
+                {renderTeamMember("team-member1.jpg", "Brigith Lorena Giraldo Vargas", "Scrum Master")}
+                {renderTeamMember("team-member2.jpg", "Daniel Melguizo Roldan", "Developer")}
+                {renderTeamMember("team-member2.jpg", "Diego Alexander Munera Tobon", "Developer")}
+                {renderTeamMember("team-member2.jpg", "Holmer Ortega Gomez", "Tester")}
+                {renderTeamMember("team-member2.jpg", "Samuel Salazar Salazar", "Tester/Arquitecto")}
+                {renderTeamMember("team-member6.jpeg", "Valentina Ochoa Arboleda", "Arquitecto")}
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
     </>
-    
-  )
+  );
+}
+
+function renderTeamMember(imageSrc, name, role) {
+  return (
+    <div className="col-md-4">
+      <div className="team-member text-center">
+        <img
+          className="img-fluid rounded-circle"
+          src={`/img/${imageSrc}`}
+          alt={name}
+          style={{ width: '150px', height: '150px' }}
+        />
+        <h3>{name}</h3>
+        <p>{role}</p>
+      </div>
+    </div>
+  );
 }
