@@ -150,28 +150,27 @@ const BatteryTemperature = ({ timeInterval, dataVehicle }) => {
   };
 
   return (
-    <div>
-      <section className="clean-block clean-blog-list dark" style={{ margin: "10px", height: '450px', overflowY: 'hidden', padding: "10px 10px 10px 10px" }}>
-        <div className="container">
-          <div className="block-content" style={{ width: '500px', height: '438px', padding: "40px 20px 0px 20px" }}>
-            <h3 style={{ textAlign: 'center' }}>Temperatura Histórica</h3>
-            <p style={{ textAlign: 'center' }}>
-              Esta gráfica muestra la temperatura promedio por {timeInterval === 'day' ? 'día' : timeInterval === 'hour' ? 'hora' : 'minuto'} de la batería del vehículo eléctrico a lo largo del tiempo.
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <div style={{ width: '100%', height: '250px', position: 'relative', top: '10%', left: '0%' }}>
-                <Line data={data} options={options} />
-              </div>
-              <div style={{ width: '30%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgreen', padding: '10px' }}>
-                <div style={{ textAlign: 'center' }}>
-                  <h6 style={{ margin: '0', padding: '0' }}>{currentTemperature}(°C) Temperatura actual</h6>
-                </div>
+    <>
+      <div className="container" style={{padding: '0', height: '450px'}}>
+        <div className="block-content" style={{ width: '100%', height: '100%', padding: '20px'}}>
+          <h3 style={{ textAlign: 'center' }}>Temperatura Histórica</h3>
+          <p style={{ textAlign: 'center' }}>
+            Esta gráfica muestra la temperatura promedio por {timeInterval === 'day' ? 'día' : timeInterval === 'hour' ? 'hora' : 'minuto'} de la batería del vehículo eléctrico a lo largo del tiempo.
+          </p>
+
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div style={{ width: '70%', height: '100%', marginRight: '5%'}}>
+              <Line data={data} options={options} />
+            </div>
+            <div style={{ width: '25%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgreen', padding: '10px' }}>
+              <div style={{ textAlign: 'center' }}>
+                <h6 style={{ margin: '0', padding: '0' }}>{currentTemperature}(°C) Temperatura actual</h6>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </>
   );
 };
 

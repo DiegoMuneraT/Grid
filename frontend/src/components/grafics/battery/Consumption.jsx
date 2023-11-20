@@ -75,28 +75,27 @@ function Consumption({dataVehicle}) {
 
   return (
     <div>
-    <section className="clean-block clean-blog-list dark" style={{ height: '100vh', overflowY: 'hidden', padding: "10px 10px 10px 10px"}}>
-      <div className="container">
-        <div className="block-content" style={{ margin: '10px 0 0 0px', width: '1060px', height: '530px', padding: "40px" }}>
+      <div className="container" style={{padding: '0'}}>
+        <div className="block-content" style={{ width: '100%', height: '100%', padding: '40px'}}>
           <h3 style={{ textAlign: 'center' }}>Consumo Horario Histórico</h3>
           <p style={{ textAlign: 'center' }}>
             Esta gráfica muestra el consumo promedio por hora del vehículo eléctrico a lo largo del día. Cada barra representa la cantidad de energía consumida en vatios-hora (Wh) en una hora específica.
           </p>
           <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <div style={{ width: '100%', height: '700px', position: 'relative', top: '10%', left: '0%' }}>
-              <canvas id="myChart" width="400" height="200"></canvas>
+            <div style={{ width: '70%', position: 'relative', marginRight: "10%"}}>
+              <canvas id="myChart"></canvas>
             </div>
-            <div style={{ width: '30%', height: '150px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgreen', padding: '10px' }}>
+            <div style={{ width: '20%', height: '150px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgreen', padding: '10px' }}>
               <div style={{ textAlign: 'center' }}>
                 <h5 style={{ margin: '0', padding: '0' }}>
-                  {loading ? 'Cargando...' : `${totalConsumptionRef.current.toFixed(2)} (Wh) Promedio de consumo`}</h5>
+                  {loading ? 'Cargando...' : `${totalConsumptionRef.current.toFixed(2)} (Wh) Promedio de consumo`}
+                </h5>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
 );
 }
 

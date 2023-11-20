@@ -58,7 +58,7 @@ function calculateAverage(data) {
   return sum / data.length;
 }
 
-const PowerElectric = ({ timeInterval, dataVehicle}) => {
+const PowerElectric = ({ timeInterval, dataVehicle }) => {
   const [powerData, setPowerData] = useState([]);
   const [currentPower, setCurrentPower] = useState(0);
 
@@ -138,7 +138,7 @@ const PowerElectric = ({ timeInterval, dataVehicle}) => {
           type: 'time',
           time: {
             unit: timeInterval,
-            tooltipFormat: 'll HH:mm:ss', 
+            tooltipFormat: 'll HH:mm:ss',
           },
           scaleLabel: {
             display: true,
@@ -150,28 +150,27 @@ const PowerElectric = ({ timeInterval, dataVehicle}) => {
   };
 
   return (
-    <div>
-      <section className="clean-block clean-blog-list dark" style={{ margin: "10px", height: '450px', overflowY: 'hidden', padding: "10px 10px 10px 10px" }}>
-        <div className="container">
-          <div className="block-content" style={{ width: '500px', height: '438px', padding: "40px 20px 0px 20px" }}>
-            <h2 style={{ textAlign: 'center' }}>Potencia Eléctrica Histórica</h2>
-            <p style={{ textAlign: 'center' }}>
+    <>
+      <div className="container" style={{padding: '0', height: '450px'}}>
+        <div className="block-content" style={{ width: '100%', height: '100%', padding: '20px'}}>
+          <h2 style={{ textAlign: 'center' }}>Potencia Eléctrica Histórica</h2>
+          <p style={{ textAlign: 'center' }}>
             Esta gráfica muestra la potencia eléctrica promedio por {timeInterval === 'day' ? 'día' : timeInterval === 'hour' ? 'hora' : 'minuto'} del vehículo eléctrico a lo largo del tiempo.
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <div style={{ width: '100%', height: '250px', position: 'relative', top: '10%', left: '0%' }}>
-                <Line data={data} options={options} />
-              </div>
-              <div style={{ width: '30%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgreen', padding: '10px' }}>
-                <div style={{ textAlign: 'center' }}>
-                  <h6 style={{ margin: '0', padding: '0' }}>{currentPower}(Kw) Potencia actual</h6>
-                </div>
+          </p>
+
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div style={{ width: '70%', height: '100%', marginRight: '5%'}}>
+              <Line data={data} options={options} />
+            </div>
+            <div style={{ width: '25%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgreen', padding: '10px' }}>
+              <div style={{ textAlign: 'center' }}>
+                <h6 style={{ margin: '0', padding: '0' }}>{currentPower}(Kw) Potencia actual</h6>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </>
   );
 };
 

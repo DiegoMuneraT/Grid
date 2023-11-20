@@ -150,28 +150,27 @@ const BatteryState = ({ timeInterval, dataVehicle }) => {
   };
 
   return (
-    <div>
-      <section className="clean-block clean-blog-list dark" style={{ margin: "8px", height: '450px', overflowY: 'hidden', padding: "10px 10px 10px 10px" }}>
-        <div className="container">
-          <div className="block-content" style={{ width: '500px', height: '480px', padding: "40px 20px 0px 20px" }}>
-            <h2 style={{ textAlign: 'center' }}>Carga Histórica de la Batería</h2>
-            <p style={{ textAlign: 'center' }}>
-              Esta gráfica muestra la evolución histórica del estado de carga de la batería del vehículo eléctrico en porcentaje(%).
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <div style={{ width: '100%', height: '250px', position: 'relative', top: '10%', left: '0%' }}>
-                <Line data={data} options={options} />
-              </div>
-              <div style={{ width: '20%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgreen', padding: '10px' }}>
-                <div style={{ textAlign: 'center' }}>
-                  <h6 style={{ fontSize: "12px", margin: '0', padding: '0' }}>{currentCharge.toFixed(2)}(%) Carga Actual</h6>
-                </div>
+    <>
+      <div className="container" style={{padding: '0', height: '450px'}}>
+        <div className="block-content" style={{ width: '100%', height: '100%', padding: '40px'}}>
+          <h2 style={{ textAlign: 'center' }}>Carga Histórica de la Batería</h2>
+          <p style={{ textAlign: 'center' }}>
+            Esta gráfica muestra la evolución histórica del estado de carga de la batería del vehículo eléctrico en porcentaje(%).
+          </p>
+
+          <div style={{ display: 'flex', flexDirection: 'row'}}>
+            <div style={{ width: '70%', height: '100%', marginRight: '10%'}}>
+              <Line data={data} options={options} />
+            </div>
+            <div style={{ width: '20%', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'lightgreen', padding: '10px' }}>
+              <div style={{ textAlign: 'center' }}>
+                <h6 style={{ fontSize: "12px", margin: '0', padding: '0' }}>{currentCharge.toFixed(2)}(%) Carga Actual</h6>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </>
   );
 };
 
