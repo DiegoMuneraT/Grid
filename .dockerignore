@@ -1,7 +1,0 @@
-env
-frontend
-README.md
-react-deployment.yml
-react-service.yml
-django-deployment.yml
-django-service.yml
