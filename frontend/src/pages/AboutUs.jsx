@@ -46,7 +46,7 @@ export default function AboutUs() {
               <div className="row">
                 {renderTeamMember("team-member1.jpg", "Brigith Lorena Giraldo Vargas", "Scrum Master")}
                 {renderTeamMember("team-member2.jpeg", "Daniel Melguizo Roldan", "Developer")}
-                {renderTeamMember("icono.png", "Diego Alexander Munera Tobon", "Developer")}
+                {renderTeamMember("team-member3.jpeg", "Diego Alexander Munera Tobon", "Developer")}
                 {renderTeamMember("icono.png", "Holmer Ortega Gomez", "Tester")}
                 {renderTeamMember("icono.png", "Samuel Salazar Salazar", "Tester/Arquitecto")}
                 {renderTeamMember("team-member6.jpeg", "Valentina Ochoa Arboleda", "Arquitecto")}
